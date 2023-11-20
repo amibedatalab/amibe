@@ -1,0 +1,235 @@
+[2023-11-18 23:36:56,895] INFO [autoreload:run_with_reloader:637 MainProcess 15064] Watching for file changes with StatReloader
+[2023-11-18 23:38:55,453] INFO [autoreload:run_with_reloader:637 MainProcess 3852] Watching for file changes with StatReloader
+[2023-11-18 23:39:38,021] INFO [autoreload:run_with_reloader:637 MainProcess 22864] Watching for file changes with StatReloader
+[2023-11-18 23:44:24,454] INFO [autoreload:run_with_reloader:637 MainProcess 23188] Watching for file changes with StatReloader
+[2023-11-18 23:44:50,989] INFO [autoreload:run_with_reloader:637 MainProcess 20364] Watching for file changes with StatReloader
+[2023-11-18 23:51:11,989] INFO [autoreload:run_with_reloader:637 MainProcess 7236] Watching for file changes with StatReloader
+[2023-11-18 23:52:15,731] INFO [autoreload:run_with_reloader:637 MainProcess 20932] Watching for file changes with StatReloader
+[2023-11-18 23:52:32,785] INFO [views:get:50 MainProcess 20932] SigninView_get called..
+[2023-11-18 23:52:32,848] ERROR [log:log_response:224 MainProcess 20932] Internal Server Error: /hub/login/
+Traceback (most recent call last):
+  File "C:\Yusuf\gymenv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\views.py", line 52, in get
+    return render(request, 'login.html', {'form': form})
+  File "C:\Yusuf\gymenv\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\template\base.py", line 168, in render
+    with context.bind_template(self):
+  File "C:\Users\asd\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\template\context.py", line 240, in bind_template
+    processors = (template.engine.template_context_processors +
+  File "C:\Yusuf\gymenv\lib\site-packages\django\utils\functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\template\engine.py", line 85, in template_context_processors
+    return tuple(import_string(path) for path in context_processors)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\template\engine.py", line 85, in <genexpr>
+    return tuple(import_string(path) for path in context_processors)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\utils\module_loading.py", line 17, in import_string
+    module = import_module(module_path)
+  File "C:\Users\asd\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1004, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'django_settings_export'
+[2023-11-18 23:52:33,071] WARNING [log:log_response:224 MainProcess 20932] Not Found: /favicon.ico
+[2023-11-18 23:54:01,210] INFO [autoreload:run_with_reloader:637 MainProcess 1536] Watching for file changes with StatReloader
+[2023-11-18 23:54:06,064] INFO [views:get:50 MainProcess 1536] SigninView_get called..
+[2023-11-18 23:55:03,476] INFO [views:get:50 MainProcess 1536] SigninView_get called..
+[2023-11-19 00:01:08,949] INFO [autoreload:trigger_reload:251 MainProcess 1536] C:\Yusuf\pelocal-chsbc-16nov2023\apps\chsbc_hub\apps.py changed, reloading.
+[2023-11-19 00:01:09,590] INFO [autoreload:run_with_reloader:637 MainProcess 1264] Watching for file changes with StatReloader
+[2023-11-19 00:03:25,439] INFO [autoreload:trigger_reload:251 MainProcess 1264] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\forms.py changed, reloading.
+[2023-11-19 00:03:26,073] INFO [autoreload:run_with_reloader:637 MainProcess 16056] Watching for file changes with StatReloader
+[2023-11-19 00:03:32,843] INFO [autoreload:trigger_reload:251 MainProcess 16056] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\forms.py changed, reloading.
+[2023-11-19 00:03:33,510] INFO [autoreload:run_with_reloader:637 MainProcess 8228] Watching for file changes with StatReloader
+[2023-11-19 00:03:45,508] INFO [autoreload:trigger_reload:251 MainProcess 8228] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\forms.py changed, reloading.
+[2023-11-19 00:03:46,142] INFO [autoreload:run_with_reloader:637 MainProcess 25564] Watching for file changes with StatReloader
+[2023-11-19 00:03:47,743] INFO [autoreload:trigger_reload:251 MainProcess 25564] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\forms.py changed, reloading.
+[2023-11-19 00:03:48,414] INFO [autoreload:run_with_reloader:637 MainProcess 23800] Watching for file changes with StatReloader
+[2023-11-19 00:03:50,001] INFO [autoreload:trigger_reload:251 MainProcess 23800] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\forms.py changed, reloading.
+[2023-11-19 00:03:50,648] INFO [autoreload:run_with_reloader:637 MainProcess 25480] Watching for file changes with StatReloader
+[2023-11-19 00:03:52,257] INFO [autoreload:trigger_reload:251 MainProcess 25480] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\forms.py changed, reloading.
+[2023-11-19 00:03:52,911] INFO [autoreload:run_with_reloader:637 MainProcess 24816] Watching for file changes with StatReloader
+[2023-11-19 00:04:09,059] INFO [autoreload:trigger_reload:251 MainProcess 24816] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\forms.py changed, reloading.
+[2023-11-19 00:04:09,692] INFO [autoreload:run_with_reloader:637 MainProcess 21716] Watching for file changes with StatReloader
+[2023-11-19 00:07:38,720] INFO [autoreload:trigger_reload:251 MainProcess 21716] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\forms.py changed, reloading.
+[2023-11-19 00:07:39,390] INFO [autoreload:run_with_reloader:637 MainProcess 25280] Watching for file changes with StatReloader
+[2023-11-19 00:08:25,286] INFO [autoreload:run_with_reloader:637 MainProcess 24724] Watching for file changes with StatReloader
+[2023-11-19 00:09:04,420] INFO [autoreload:trigger_reload:251 MainProcess 24724] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\forms.py changed, reloading.
+[2023-11-19 00:09:05,042] INFO [autoreload:run_with_reloader:637 MainProcess 24996] Watching for file changes with StatReloader
+[2023-11-19 00:09:13,893] INFO [autoreload:trigger_reload:251 MainProcess 24996] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\forms.py changed, reloading.
+[2023-11-19 00:09:14,518] INFO [autoreload:run_with_reloader:637 MainProcess 25016] Watching for file changes with StatReloader
+[2023-11-19 00:09:23,382] INFO [autoreload:trigger_reload:251 MainProcess 25016] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\forms.py changed, reloading.
+[2023-11-19 00:09:24,045] INFO [autoreload:run_with_reloader:637 MainProcess 20856] Watching for file changes with StatReloader
+[2023-11-19 00:10:37,697] INFO [autoreload:trigger_reload:251 MainProcess 20856] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\models.py changed, reloading.
+[2023-11-19 00:10:38,363] INFO [autoreload:run_with_reloader:637 MainProcess 22744] Watching for file changes with StatReloader
+[2023-11-19 00:10:39,962] INFO [autoreload:trigger_reload:251 MainProcess 22744] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\models.py changed, reloading.
+[2023-11-19 00:10:40,610] INFO [autoreload:run_with_reloader:637 MainProcess 4732] Watching for file changes with StatReloader
+[2023-11-19 00:11:10,310] INFO [autoreload:trigger_reload:251 MainProcess 4732] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\views.py changed, reloading.
+[2023-11-19 00:11:10,968] INFO [autoreload:run_with_reloader:637 MainProcess 6948] Watching for file changes with StatReloader
+[2023-11-19 00:11:31,356] INFO [autoreload:trigger_reload:251 MainProcess 6948] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\views.py changed, reloading.
+[2023-11-19 00:11:31,992] INFO [autoreload:run_with_reloader:637 MainProcess 19176] Watching for file changes with StatReloader
+[2023-11-19 00:11:33,586] INFO [autoreload:trigger_reload:251 MainProcess 19176] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\views.py changed, reloading.
+[2023-11-19 00:11:34,274] INFO [autoreload:run_with_reloader:637 MainProcess 7376] Watching for file changes with StatReloader
+[2023-11-19 00:11:39,933] INFO [views:get:50 MainProcess 7376] SigninView_get called..
+[2023-11-19 00:11:51,604] INFO [views:post:64 MainProcess 7376] SigninView_post:: user test@amibe.in login.
+[2023-11-19 00:11:51,633] WARNING [log:log_response:224 MainProcess 7376] Forbidden: /hub/
+[2023-11-19 00:20:18,652] INFO [autoreload:trigger_reload:251 MainProcess 7376] C:\Yusuf\pelocal-chsbc-16nov2023\apps\authentication\views.py changed, reloading.
+[2023-11-19 00:20:20,638] INFO [autoreload:run_with_reloader:637 MainProcess 25284] Watching for file changes with StatReloader
+[2023-11-19 00:21:52,154] WARNING [log:log_response:224 MainProcess 25284] Forbidden: /hub/
+[2023-11-19 00:21:57,239] WARNING [log:log_response:224 MainProcess 25284] Forbidden: /hub/
+[2023-11-19 00:22:00,243] WARNING [log:log_response:224 MainProcess 25284] Forbidden: /hub/
+[2023-11-19 00:22:28,707] WARNING [log:log_response:224 MainProcess 25284] Forbidden: /hub/
+[2023-11-19 00:22:42,351] WARNING [log:log_response:224 MainProcess 25284] Forbidden: /hub/
+[2023-11-19 00:22:56,795] WARNING [log:log_response:224 MainProcess 25284] Forbidden: /hub/
+[2023-11-19 00:23:23,221] WARNING [log:log_response:224 MainProcess 25284] Forbidden: /hub/
+[2023-11-19 00:23:24,528] WARNING [log:log_response:224 MainProcess 25284] Forbidden: /hub/
+[2023-11-19 00:23:38,322] WARNING [log:log_response:224 MainProcess 25284] Forbidden: /hub/
+[2023-11-19 00:23:54,094] WARNING [log:log_response:224 MainProcess 25284] Forbidden: /hub/
+[2023-11-19 00:23:55,231] WARNING [log:log_response:224 MainProcess 25284] Forbidden: /hub/
+[2023-11-19 00:23:57,227] WARNING [log:log_response:224 MainProcess 25284] Forbidden: /hub/
+[2023-11-19 00:24:32,330] INFO [autoreload:trigger_reload:251 MainProcess 25284] C:\Yusuf\pelocal-chsbc-16nov2023\apps\chsbc_hub\views.py changed, reloading.
+[2023-11-19 00:24:33,023] INFO [autoreload:run_with_reloader:637 MainProcess 8000] Watching for file changes with StatReloader
+[2023-11-19 00:24:35,056] ERROR [log:log_response:224 MainProcess 8000] Internal Server Error: /hub/
+Traceback (most recent call last):
+  File "C:\Yusuf\gymenv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Yusuf\pelocal-chsbc-16nov2023\apps\chsbc_hub\views.py", line 147, in dispatch
+    return super().dispatch(*args, **kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\contrib\auth\mixins.py", line 125, in dispatch
+    user_test_result = self.get_test_func()()
+  File "C:\Yusuf\gymenv\lib\site-packages\django\contrib\auth\mixins.py", line 114, in test_func
+    raise NotImplementedError(
+NotImplementedError: DataUploadTaskListView is missing the implementation of the test_func() method.
+[2023-11-19 00:24:44,183] INFO [autoreload:trigger_reload:251 MainProcess 8000] C:\Yusuf\pelocal-chsbc-16nov2023\apps\chsbc_hub\views.py changed, reloading.
+[2023-11-19 00:24:44,907] INFO [autoreload:run_with_reloader:637 MainProcess 14692] Watching for file changes with StatReloader
+[2023-11-19 00:24:46,996] WARNING [log:log_response:224 MainProcess 14692] Forbidden (Permission denied): /hub/
+Traceback (most recent call last):
+  File "C:\Yusuf\gymenv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Yusuf\pelocal-chsbc-16nov2023\apps\chsbc_hub\views.py", line 147, in dispatch
+    return super().dispatch(*args, **kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\contrib\auth\mixins.py", line 127, in dispatch
+    return self.handle_no_permission()
+  File "C:\Yusuf\gymenv\lib\site-packages\django\contrib\auth\mixins.py", line 46, in handle_no_permission
+    raise PermissionDenied(self.get_permission_denied_message())
+django.core.exceptions.PermissionDenied
+[2023-11-19 00:24:48,116] WARNING [log:log_response:224 MainProcess 14692] Forbidden (Permission denied): /hub/
+Traceback (most recent call last):
+  File "C:\Yusuf\gymenv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\contrib\auth\decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Yusuf\pelocal-chsbc-16nov2023\apps\chsbc_hub\views.py", line 147, in dispatch
+    return super().dispatch(*args, **kwargs)
+  File "C:\Yusuf\gymenv\lib\site-packages\django\contrib\auth\mixins.py", line 127, in dispatch
+    return self.handle_no_permission()
+  File "C:\Yusuf\gymenv\lib\site-packages\django\contrib\auth\mixins.py", line 46, in handle_no_permission
+    raise PermissionDenied(self.get_permission_denied_message())
+django.core.exceptions.PermissionDenied
+[2023-11-19 00:24:51,918] INFO [autoreload:trigger_reload:251 MainProcess 14692] C:\Yusuf\pelocal-chsbc-16nov2023\apps\chsbc_hub\views.py changed, reloading.
+[2023-11-19 00:24:52,568] INFO [autoreload:run_with_reloader:637 MainProcess 23024] Watching for file changes with StatReloader
+[2023-11-19 00:24:57,309] INFO [autoreload:trigger_reload:251 MainProcess 23024] C:\Yusuf\pelocal-chsbc-16nov2023\apps\chsbc_hub\views.py changed, reloading.
+[2023-11-19 00:24:57,948] INFO [autoreload:run_with_reloader:637 MainProcess 2820] Watching for file changes with StatReloader
+[2023-11-19 00:25:20,771] WARNING [log:log_response:224 MainProcess 2820] Forbidden: /hub/
+[2023-11-19 00:25:21,889] WARNING [log:log_response:224 MainProcess 2820] Forbidden: /hub/
+[2023-11-19 00:25:26,258] WARNING [log:log_response:224 MainProcess 2820] Forbidden: /hub/
+[2023-11-19 00:25:27,897] WARNING [log:log_response:224 MainProcess 2820] Forbidden: /hub/
+[2023-11-19 00:25:54,781] WARNING [log:log_response:224 MainProcess 2820] Forbidden: /hub/
+[2023-11-19 00:25:58,077] INFO [views:get:41 MainProcess 2820] LogoutView_get:: user test@amibe.in logout.
+[2023-11-19 00:25:58,088] INFO [views:get:50 MainProcess 2820] SigninView_get called..
+[2023-11-19 00:26:00,494] INFO [views:post:64 MainProcess 2820] SigninView_post:: user  login.
+[2023-11-19 12:04:06,712] INFO [autoreload:run_with_reloader:637 MainProcess 21272] Watching for file changes with StatReloader
+[2023-11-19 12:04:15,955] INFO [views:get:41 MainProcess 21272] LogoutView_get:: user  logout.
+[2023-11-19 12:04:15,966] INFO [views:get:50 MainProcess 21272] SigninView_get called..
+[2023-11-19 12:10:57,689] INFO [views:post:64 MainProcess 21272] SigninView_post:: user  login.
+[2023-11-19 12:17:29,432] INFO [views:get:41 MainProcess 21272] LogoutView_get:: user  logout.
+[2023-11-19 12:17:29,441] INFO [views:get:50 MainProcess 21272] SigninView_get called..
+[2023-11-19 12:17:31,189] INFO [views:post:64 MainProcess 21272] SigninView_post:: user  login.
+[2023-11-19 12:17:37,475] INFO [views:get:41 MainProcess 21272] LogoutView_get:: user  logout.
+[2023-11-19 12:17:37,487] INFO [views:get:50 MainProcess 21272] SigninView_get called..
+[2023-11-19 12:17:38,662] INFO [views:post:64 MainProcess 21272] SigninView_post:: user  login.
+[2023-11-19 12:24:26,261] INFO [views:get:41 MainProcess 21272] LogoutView_get:: user  logout.
+[2023-11-19 12:24:26,272] INFO [views:get:50 MainProcess 21272] SigninView_get called..
+[2023-11-19 12:24:43,384] INFO [views:post:64 MainProcess 21272] SigninView_post:: user  login.
+[2023-11-19 12:27:27,104] WARNING [log:log_response:224 MainProcess 21272] Not Found: /favicon.ico
+[2023-11-19 12:27:54,511] INFO [views:get:50 MainProcess 21272] SigninView_get called..
+[2023-11-19 12:27:56,175] INFO [views:post:64 MainProcess 21272] SigninView_post:: user  login.
+[2023-11-19 12:34:32,358] INFO [views:get:41 MainProcess 21272] LogoutView_get:: user  logout.
+[2023-11-19 12:34:32,371] INFO [views:get:50 MainProcess 21272] SigninView_get called..
+[2023-11-19 12:34:34,231] INFO [views:post:64 MainProcess 21272] SigninView_post:: user  login.
+[2023-11-20 22:58:25,835] INFO [autoreload:run_with_reloader:637 MainProcess 5320] Watching for file changes with StatReloader
+[2023-11-20 23:07:15,078] INFO [autoreload:run_with_reloader:637 MainProcess 7592] Watching for file changes with StatReloader
+[2023-11-20 23:13:34,816] INFO [autoreload:run_with_reloader:637 MainProcess 19888] Watching for file changes with StatReloader
+[2023-11-20 23:14:07,468] INFO [autoreload:trigger_reload:251 MainProcess 19888] C:\Yusuf\gym-project\apps\chsbc_hub\tasks.py changed, reloading.
+[2023-11-20 23:14:08,125] INFO [autoreload:run_with_reloader:637 MainProcess 18604] Watching for file changes with StatReloader
+[2023-11-20 23:16:19,377] WARNING [log:log_response:224 MainProcess 18604] Not Found: /favicon.ico
+[2023-11-20 23:16:35,086] INFO [views:get:50 MainProcess 18604] SigninView_get called..
+[2023-11-20 23:16:38,029] INFO [views:post:64 MainProcess 18604] SigninView_post:: user  login.
+[2023-11-20 23:21:41,324] INFO [autoreload:trigger_reload:251 MainProcess 18604] C:\Yusuf\gym-project\amibe\urls.py changed, reloading.
+[2023-11-20 23:21:41,834] INFO [autoreload:run_with_reloader:637 MainProcess 19972] Watching for file changes with StatReloader
+[2023-11-20 23:22:20,351] INFO [autoreload:run_with_reloader:637 MainProcess 20572] Watching for file changes with StatReloader
+[2023-11-20 23:22:53,207] INFO [autoreload:trigger_reload:251 MainProcess 20572] C:\Yusuf\gym-project\apps\gym_hub\apps.py changed, reloading.
+[2023-11-20 23:22:53,774] INFO [autoreload:run_with_reloader:637 MainProcess 8456] Watching for file changes with StatReloader
+[2023-11-20 23:23:05,000] INFO [autoreload:run_with_reloader:637 MainProcess 10748] Watching for file changes with StatReloader
+[2023-11-20 23:25:57,536] INFO [autoreload:run_with_reloader:637 MainProcess 20588] Watching for file changes with StatReloader
+[2023-11-20 23:26:29,903] INFO [autoreload:trigger_reload:251 MainProcess 20588] C:\Yusuf\gym-project\apps\authentication\admin.py changed, reloading.
+[2023-11-20 23:26:30,514] INFO [autoreload:run_with_reloader:637 MainProcess 7812] Watching for file changes with StatReloader
+[2023-11-20 23:26:49,697] INFO [autoreload:trigger_reload:251 MainProcess 7812] C:\Yusuf\gym-project\apps\authentication\urls.py changed, reloading.
+[2023-11-20 23:26:50,305] INFO [autoreload:run_with_reloader:637 MainProcess 5004] Watching for file changes with StatReloader
+[2023-11-20 23:30:04,751] INFO [autoreload:run_with_reloader:637 MainProcess 22416] Watching for file changes with StatReloader
+[2023-11-20 23:30:54,149] INFO [autoreload:run_with_reloader:637 MainProcess 21848] Watching for file changes with StatReloader
+[2023-11-20 23:32:05,675] INFO [autoreload:trigger_reload:251 MainProcess 21848] C:\Yusuf\gym-project\apps\authentication\views.py changed, reloading.
+[2023-11-20 23:32:06,314] INFO [autoreload:run_with_reloader:637 MainProcess 21588] Watching for file changes with StatReloader
+[2023-11-20 23:32:16,176] INFO [autoreload:trigger_reload:251 MainProcess 21588] C:\Yusuf\gym-project\apps\authentication\views.py changed, reloading.
+[2023-11-20 23:32:16,818] INFO [autoreload:run_with_reloader:637 MainProcess 10948] Watching for file changes with StatReloader
+[2023-11-20 23:32:21,529] INFO [autoreload:trigger_reload:251 MainProcess 10948] C:\Yusuf\gym-project\apps\authentication\views.py changed, reloading.
+[2023-11-20 23:32:22,175] INFO [autoreload:run_with_reloader:637 MainProcess 7784] Watching for file changes with StatReloader
+[2023-11-20 23:32:32,089] INFO [autoreload:trigger_reload:251 MainProcess 7784] C:\Yusuf\gym-project\apps\authentication\models.py changed, reloading.
+[2023-11-20 23:32:32,729] INFO [autoreload:run_with_reloader:637 MainProcess 6392] Watching for file changes with StatReloader
+[2023-11-20 23:32:35,357] INFO [autoreload:trigger_reload:251 MainProcess 6392] C:\Yusuf\gym-project\apps\authentication\models.py changed, reloading.
+[2023-11-20 23:32:36,029] INFO [autoreload:run_with_reloader:637 MainProcess 8364] Watching for file changes with StatReloader
+[2023-11-20 23:32:37,617] INFO [autoreload:trigger_reload:251 MainProcess 8364] C:\Yusuf\gym-project\apps\authentication\models.py changed, reloading.
+[2023-11-20 23:32:38,246] INFO [autoreload:run_with_reloader:637 MainProcess 8388] Watching for file changes with StatReloader
+[2023-11-20 23:34:14,867] INFO [views:get:50 MainProcess 8388] SigninView_get called..
+[2023-11-20 23:34:18,407] INFO [views:post:64 MainProcess 8388] SigninView_post:: user test@amibe.in login.
+[2023-11-20 23:34:18,438] WARNING [log:log_response:224 MainProcess 8388] Forbidden: /hub/
+[2023-11-20 23:35:24,680] WARNING [log:log_response:224 MainProcess 8388] Forbidden: /hub/
+[2023-11-20 23:42:01,960] INFO [autoreload:trigger_reload:251 MainProcess 8388] C:\Yusuf\gym-project\apps\authentication\admin.py changed, reloading.
+[2023-11-20 23:42:02,607] INFO [autoreload:run_with_reloader:637 MainProcess 20548] Watching for file changes with StatReloader
+[2023-11-20 23:42:14,621] INFO [autoreload:trigger_reload:251 MainProcess 20548] C:\Yusuf\gym-project\apps\authentication\views.py changed, reloading.
+[2023-11-20 23:42:15,245] INFO [autoreload:run_with_reloader:637 MainProcess 16464] Watching for file changes with StatReloader

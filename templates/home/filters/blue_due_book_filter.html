@@ -1,0 +1,1345 @@
+
+<style>
+  .application_no_show{
+    display:block;
+  }
+  .application_no_hide{
+    display:none;
+  }
+
+  .product_name_show{
+    display:block;
+  }
+  .product_name_hide{
+    display:none;
+  }
+
+  .premium_frequency_show{
+    display:block;
+  }
+  .premium_frequency_hide{
+    display:none;
+  }
+
+  .premium_paying_term_show{
+    display:block;
+  }
+  .premium_paying_term_hide{
+    display:none;
+  }
+
+  .policy_term_show{
+    display:block;
+  }
+  .policy_term_hide{
+    display:none;
+  }
+
+  .annualized_target_premium_show{
+    display:block;
+  }
+  .annualized_target_premium_hide{
+    display:none;
+  }
+
+  .modal_based_premium_show{
+    display:block;
+  }
+  .modal_based_premium_hide{
+    display:none;
+  }
+
+
+
+  .year_banding_show{
+    display:block;
+  }
+  .year_banding_hide{
+    display:none;
+  }
+
+
+
+  .owner_name_show{
+    display:block;
+  }
+  .owner_name_hide{
+    display:none;
+  }
+
+  .registration_status_as_on_due_date_show{
+    display:block;
+  }
+  .registration_status_as_on_due_date_hide{
+    display:none;
+  }
+
+  .concatenate_with_merging_branch_show{
+    display:block;
+  }
+  .concatenate_with_merging_branch_hide{
+    display:none;
+  }
+
+
+  .rrm_name_show{
+    display:block;
+  }
+  .rrm_name_hide{
+    display:none;
+  }
+
+  .zrm_name_show{
+    display:block;
+  }
+  .zrm_name_hide{
+    display:none;
+  }
+
+
+  .cro_zh_name_show{
+    display:block;
+  }
+  .cro_zh_name_hide{
+    display:none;
+  }
+
+  .status_of_policy_show{
+    display:block;
+  }
+  .status_of_policy_hide{
+    display:none;
+  }
+
+  .branch_of_sale_show{
+    display:block;
+  }
+  .branch_of_sale_hide{
+    display:none;
+  }
+
+  .sp_agent_code_show{
+    display:block;
+  }
+  .sp_agent_code_hide{
+    display:none;
+  }
+
+  .commision_amount_show{
+    display:block;
+  }
+  .commision_amount_hide{
+    display:none;
+  }
+
+  .branch_code_show{
+    display:block;
+  }
+  .branch_code_hide{
+    display:none;
+  }
+
+  .branch_name_show{
+    display:block;
+  }
+  .branch_name_hide{
+    display:none;
+  }
+
+  .staff_non_staff_show{
+    display:block;
+  }
+  .staff_non_staff_hide{
+    display:none;
+  }
+
+  .bank_zone_show{
+    display:block;
+  }
+  .bank_zone_hide{
+    display:none;
+  }
+
+  .bank_circle_show{
+    display:block;
+  }
+  .bank_circle_hide{
+    display:none;
+  }
+
+  .filename_show{
+    display:block;
+  }
+  .filename_hide{
+    display:none;
+  }
+
+  .collection_flag_show{
+    display:block;
+  }
+  .collection_flag_hide{
+    display:none;
+  }
+
+  .book_type_show{
+    display:block;
+  }
+  .book_type_hide{
+    display:none;
+  }
+
+  .is_approved_show{
+    display:block;
+  }
+  .is_approved_hide{
+    display:none;
+  }
+
+
+
+  .financial_year_show{
+    display:block;
+  }
+  .financial_year_hide{
+    display:none;
+  }
+
+  .is_match_with_channel_partners_show{
+    display:block;
+  }
+  .is_match_with_channel_partners_hide{
+    display:none;
+  }
+
+  .due_month_show{
+    display:block;
+  }
+  .due_month_hide{
+    display:none;
+  }
+
+  .actual_due_date_show{
+    display:block;
+  }
+  .actual_due_date_hide{
+    display:none;
+  }
+
+  .policy_effective_date_show{
+    display:block;
+  }
+  .policy_effective_date_hide{
+    display:none;
+  }
+
+  .next_premium_due_date_show{
+    display:block;
+  }
+  .next_premium_due_date_hide{
+    display:none;
+  }
+  .created_on_show{
+    display:block;
+  }
+  .created_on_hide{
+    display:none;
+  }
+
+
+
+</style>
+<form method="GET" id="filterForm" action="{% url 'due_blue_view_report' %}">
+    <div  style="display:flex;flex-wrap:wrap">
+    <div class="form-group col-md-3">
+        <input type="text" class="form-control" placeholder="policy_no"  name="policy_no" value="{{ request.GET.policy_no }}">
+    </div>
+    <div class="form-group col-md-3">
+        <input type="text" class="form-control" placeholder="bank_channel_partner"  name="bank_channel_partner" value="{{ request.GET.bank_channel_partner }}">
+    </div>
+    <div class="form-group col-md-3">
+        <input type="text" class="form-control" placeholder="product_code"  name="product_code" value="{{ request.GET.product_code }}">
+    </div>
+    <div class="form-group col-md-3">
+        <input type="text" class="form-control" placeholder="plan_type"  name="plan_type" value="{{ request.GET.plan_type }}">
+    </div>
+
+
+    <!--Selected Filters-->
+    <div class="form-group col-md-3" id="application_no1">
+        <input  type="text" class="form-control" placeholder="application_no" id="application_no"  name="application_no" value="{{ request.GET.application_no }}">
+    </div>
+    <div class="form-group col-md-3" id="product_name1">
+        <input  type="text" class="form-control" placeholder="product_name" id="product_name"   name="product_name" value="{{ request.GET.product_name }}">
+    </div>
+    <div class="form-group col-md-3" id="premium_frequency1">
+        <input  type="text" class="form-control" placeholder="premium_frequency" id="premium_frequency"   name="premium_frequency" value="{{ request.GET.premium_frequency }}">
+    </div>
+    <div class="form-group col-md-3" id="premium_paying_term1">
+        <input  type="text" class="form-control" placeholder="premium_paying_term" id="premium_paying_term"  name="premium_paying_term" value="{{ request.GET.premium_paying_term }}">
+    </div>
+    <div class="form-group col-md-3" id="policy_term1">
+        <input  type="text" class="form-control" placeholder="policy_term" id="policy_term"  name="policy_term" value="{{ request.GET.policy_term }}">
+    </div>
+    <div class="form-group col-md-3" id="annualized_target_premium1">
+        <input  type="text" class="form-control" placeholder="annualized_target_premium" id="annualized_target_premium"  name="annualized_target_premium" value="{{ request.GET.annualized_target_premium }}">
+    </div>
+    <div class="form-group col-md-3" id="modal_based_premium1">
+        <input  type="text" class="form-control" placeholder="modal_based_premium" id="modal_based_premium"  name="modal_based_premium" value="{{ request.GET.modal_based_premium }}">
+    </div>
+
+
+    <div class="form-group col-md-3" id="year_banding1">
+        <input  type="text" class="form-control" placeholder="year_banding" id="year_banding"  name="year_banding" value="{{ request.GET.year_banding }}">
+    </div>
+
+
+    <div class="form-group col-md-3" id="owner_name1">
+        <input  type="text" class="form-control" placeholder="owner_name" id="owner_name"  name="owner_name" value="{{ request.GET.owner_name }}">
+    </div>
+    <div class="form-group col-md-3" id="registration_status_as_on_due_date1">
+        <input  type="text" class="form-control" placeholder="registration_status_as_on_due_date" id="registration_status_as_on_due_date"  name="registration_status_as_on_due_date" value="{{ request.GET.registration_status_as_on_due_date }}">
+    </div>
+    <div class="form-group col-md-3" id="concatenate_with_merging_branch1">
+        <input  type="text" class="form-control" placeholder="concatenate_with_merging_branch" id="concatenate_with_merging_branch"  name="concatenate_with_merging_branch" value="{{ request.GET.concatenate_with_merging_branch }}">
+    </div>
+    <div class="form-group col-md-3" id="rrm_name1">
+        <input  type="text" class="form-control" placeholder="rrm_name" id="rrm_name"  name="rrm_name" value="{{ request.GET.rrm_name }}">
+    </div>
+    <div class="form-group col-md-3" id="zrm_name1">
+        <input  type="text" class="form-control" placeholder="zrm_name" id="zrm_name"  name="zrm_name" value="{{ request.GET.zrm_name }}">
+    </div>
+
+    <div class="form-group col-md-3" id="cro_zh_name1">
+        <input  type="text" class="form-control" placeholder="cro_zh_name" id="cro_zh_name"  name="cro_zh_name" value="{{ request.GET.cro_zh_name }}">
+    </div>
+
+    <div class="form-group col-md-3" id="status_of_policy1">
+        <input  type="text" class="form-control" placeholder="status_of_policy" id="status_of_policy"  name="status_of_policy" value="{{ request.GET.status_of_policy }}">
+    </div>
+    <div class="form-group col-md-3" id="branch_of_sale1">
+        <input  type="text" class="form-control" placeholder="branch_of_sale" id="branch_of_sale"  name="branch_of_sale" value="{{ request.GET.branch_of_sale }}">
+    </div>
+    <div class="form-group col-md-3" id="sp_agent_code1">
+        <input  type="text" class="form-control" placeholder="sp_agent_code" id="sp_agent_code"  name="sp_agent_code" value="{{ request.GET.sp_agent_code }}">
+    </div>
+    <div class="form-group col-md-3" id="commision_amount1">
+        <input  type="text" class="form-control" placeholder="commision_amount" id="commision_amount"  name="commision_amount" value="{{ request.GET.commision_amount }}">
+    </div>
+    <div class="form-group col-md-3" id="branch_code1">
+        <input  type="text" class="form-control" placeholder="branch_code" id="branch_code"  name="branch_code" value="{{ request.GET.branch_code }}">
+    </div>
+    <div class="form-group col-md-3" id="branch_name1">
+        <input  type="text" class="form-control" placeholder="branch_name" id="branch_name"  name="branch_name" value="{{ request.GET.branch_name }}">
+    </div>
+    <div class="form-group col-md-3" id="staff_non_staff1">
+        <input  type="text" class="form-control" placeholder="staff_non_staff" id="staff_non_staff"  name="staff_non_staff" value="{{ request.GET.staff_non_staff }}">
+    </div>
+    <div class="form-group col-md-3" id="bank_zone1">
+        <input  type="text" class="form-control" placeholder="bank_zone" id="bank_zone"  name="bank_zone" value="{{ request.GET.bank_zone }}">
+    </div>
+    <div class="form-group col-md-3" id="bank_circle1">
+        <input  type="text" class="form-control" placeholder="bank_circle" id="bank_circle"  name="bank_circle" value="{{ request.GET.bank_circle}}">
+    </div>
+
+    <!-- <div class="form-group col-md-3" id="filename1">
+        <input  type="text" class="form-control" placeholder="filename" id="filename"  name="filename" value="{{ request.GET.filename }}">
+    </div> -->
+
+    <div class="form-group col-md-3" id="collection_flag1">
+        <input  type="text" class="form-control" placeholder="collection_flag" id="collection_flag"  name="collection_flag" value="{{ request.GET.collection_flag }}">
+    </div>
+
+    <div class="form-group col-md-3" id="filename1">
+        <input  type="text" class="form-control" placeholder="filename" id="filename"  name="filename" value="{{ request.GET.filename }}">
+    </div>
+
+    <div class="form-group col-md-3" id="book_type1">
+        <input  type="text" class="form-control" placeholder="book_type" id="book_type"  name="book_type" value="{{ request.GET.book_type }}">
+    </div>
+
+    <div class="form-group col-md-3" id="is_approved1">
+        <input  type="text" class="form-control" placeholder="is_approved" id="is_approved"  name="is_approved" value="{{ request.GET.is_approved }}">
+    </div>
+
+
+
+    <div class="form-group col-md-3" id="financial_year1">
+        <input  type="text" class="form-control" placeholder="financial_year" id="financial_year"  name="financial_year" value="{{ request.GET.financial_year }}">
+    </div>
+
+    <div class="form-group col-md-3" id="is_match_with_channel_partners1">
+        <input  type="text" class="form-control" placeholder="is_match_with_channel_partners" id="is_match_with_channel_partners"  name="is_match_with_channel_partners" value="{{ request.GET.is_match_with_channel_partners }}">
+    </div>
+    
+    <div class="form-group col-md-3" id="due_month1">
+        <label for="due_month">Due Month:</label>
+        <input  type="date" class="form-control" placeholder="due_month" id="due_month"  name="due_month" value="{{ request.GET.due_month }}">
+    </div>
+
+    <div class="form-group col-md-3" id="actual_due_date1">
+        <label for="actual_due_date">Actual Due Date:</label>
+        <input  type="date" class="form-control" placeholder="actual_due_date" id="actual_due_date"  name="actual_due_date" value="{{ request.GET.actual_due_date }}">
+    </div>
+
+    <div class="form-group col-md-3" id="policy_effective_date1">
+        <label for="policy_effective_date">Policy Effective Date:</label>
+        <input  type="date" class="form-control" placeholder="policy_effective_date" id="policy_effective_date"  name="policy_effective_date" value="{{ request.GET.policy_effective_date }}">
+    </div>
+
+    <div class="form-group col-md-3" id="next_premium_due_date1">
+        <label for="next_premium_due_date">Next Premium Due Date:</label>
+        <input  type="date" class="form-control" placeholder="next_premium_due_date" id="next_premium_due_date"  name="next_premium_due_date" value="{{ request.GET.next_premium_due_date }}">
+    </div>
+    <div class="form-group col-md-3" id="created_on1">
+        <label for="created_on">Created Date:</label>
+        <input  type="date" class="form-control" placeholder="created_date" id="created_on"  name="created_on" value="{{ request.GET.created_on }}">
+    </div>
+</div>
+    <!--selected filters-->
+
+    <div style="display:flex;justify-content:center;">
+        <div class="form-group col-md-2">
+            <button type="submit" class="btn btn-danger m-0"><i class="bi fa-1.5x bi-filter m-0" ></i> Apply Filters</button>
+        </div>
+        <div class="form-group col-md-2">
+            <button type="button" id="resetFiltersButton" class="btn btn-danger m-0">
+                Clear Filters
+            </button>
+        </div>
+        
+        <div class="form-group col-md-2">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#additionalFiltersModal">
+                Additional Filters
+            </button>
+        </div>
+        <div class="form-group col-md-2">
+ <a href="{% url 'stream_bb_db_view_data' %}">
+            <button type="button" class="btn btn-danger">
+                Download Data
+            </button>
+</a>
+        </div>
+     </div>
+</form>
+<!-- Add checkboxes to the modal filters -->
+<div class="modal fade" id="additionalFiltersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Additional Filters</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="additionalFiltersForm">
+
+                    <div class="form-check">
+                        <input type="checkbox" class="application_no form-check-input" id="selectAppNo" name="select_product_code">
+                        <label class="form-check-label" for="selectAppNo">Select Application Number</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="product_name form-check-input" id="selectprodname"  name="select_product_code">
+                        <label class="form-check-label" for="selectprodname">Select Product Number</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="premium_frequency form-check-input" id="selectfreq"  name="select_product_code">
+                        <label class="form-check-label" for="selectfreq">Select Premium Frequency</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="premium_paying_term form-check-input" id="selectPayingterm" name="select_product_code">
+                        <label class="form-check-label" for="selectPayingterm">Select Premium Paying Term</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="policy_term form-check-input" id="selectpolicyterm"  name="select_product_code">
+                        <label class="form-check-label" for="selectpolicyterm">Select Policy Term</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="annualized_target_premium form-check-input" id="selectannulaized"  name="select_product_code">
+                        <label class="form-check-label" for="selectannulaized">Select Annualized Target Premium</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="modal_based_premium form-check-input" id="selectmodal"  name="select_product_code">
+                        <label class="form-check-label" for="selectmodal">Select Modal Based Premium</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="year_banding form-check-input" id="selectyearbranding"  name="select_product_code">
+                        <label class="form-check-label" for="selectyearbranding">Select Year Branding</label>
+                    </div>
+
+
+
+                    <div class="form-check">
+                        <input type="checkbox" class="owner_name form-check-input" id="selectownername"  name="select_product_code">
+                        <label class="form-check-label" for="selectownername">Select Owner Name</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="registration_status_as_on_due_date form-check-input" id="selectregstatusduedate"  name="select_product_code">
+                        <label class="form-check-label" for="selectregstatusduedate">Select Registration Status as on Due Date</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="concatenate_with_merging_branch form-check-input" id="selectconcat"  name="select_product_code">
+                        <label class="form-check-label" for="selectconcat">Select Concatenate with Merging Branch</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="rrm_name form-check-input" id="selectrrm"  name="select_product_code">
+                        <label class="form-check-label" for="selectrrm">Select RRM Name</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="zrm_name form-check-input" id="selectzrm"  name="select_product_code">
+                        <label class="form-check-label" for="selectzrm">Select ZRM Name</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="cro_zh_name form-check-input" id="selectcrozh"  name="select_product_code">
+                        <label class="form-check-label" for="selectcrozh">Select Cro ZH Name</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="status_of_policy form-check-input" id="selectstatusofpolicy"  name="select_product_code">
+                        <label class="form-check-label" for="selectstatusofpolicy">Select Status of Policy</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="branch_of_sale form-check-input" id="selectbranchofsale"  name="select_product_code">
+                        <label class="form-check-label" for="selectbranchofsale">Select Branch of Sale</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="sp_agent_code form-check-input" id="selectspagentcode"  name="select_product_code">
+                        <label class="form-check-label" for="selectbranchofsale">Select SP agent Code</label>
+                    </div>
+
+
+                    <div class="form-check">
+                        <input type="checkbox" class="commision_amount form-check-input" id="selectcommisionamt"  name="select_product_code">
+                        <label class="form-check-label" for="selectcommisionamt">Select Commision Amount</label>
+                    </div>
+
+                    <!-- <div class="form-check">
+                        <input type="checkbox" class="branch_code form-check-input" id="selectbranchcode"  name="select_product_code">
+                        <label class="form-check-label" for="selectbranchcode">Select Branch Code</label>
+                    </div> -->
+
+                    <div class="form-check">
+                        <input type="checkbox" class="branch_code form-check-input" id="selectbranchcode"  name="select_product_code">
+                        <label class="form-check-label" for="selectbranchcode">Select Branch Code</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="branch_name form-check-input" id="selectbranchname"  name="select_product_code">
+                        <label class="form-check-label" for="selectbranchname">Select Branch Name</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="staff_non_staff form-check-input" id="selectstaffnonstaff"  name="select_product_code">
+                        <label class="form-check-label" for="selectstaffnonstaff">Select Staff Non Staff</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="bank_zone form-check-input" id="selectbankzone"  name="select_product_code">
+                        <label class="form-check-label" for="selectbankzone">Select Bank Zone</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="bank_circle form-check-input" id="selectbankcircle"  name="select_product_code">
+                        <label class="form-check-label" for="selectbankcircle">Select Bank Circle</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="filename form-check-input" id="selectfilename"  name="select_product_code">
+                        <label class="form-check-label" for="selectfilename">Select File Name</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="collection_flag form-check-input" id="selectcollectionflag"  name="select_product_code">
+                        <label class="form-check-label" for="selectcollectionflag">Select Collection Flag</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="book_type form-check-input" id="selectbooktype"  name="select_product_code">
+                        <label class="form-check-label" for="selectbooktype">Select Book Type</label>
+                    </div>
+
+
+                    
+                    <div class="form-check">
+                        <input type="checkbox" class="financial_year form-check-input" id="selectfinancial_year"  name="select_product_code">
+                        <label class="form-check-label" for="selectfinancial_year">Select Financial Year</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="is_match_with_channel_partners form-check-input" id="selectis_match_with_channel_partners"  name="select_product_code">
+                        <label class="form-check-label" for="selectis_match_with_channel_partners">Select Is Match With Channel Partners</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="due_month form-check-input" id="selectduemonth"  name="select_product_code">
+                        <label class="form-check-label" for="selectduemonth">Select Due Month</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="actual_due_date form-check-input" id="selectduedate"  name="select_product_code">
+                        <label class="form-check-label" for="selectduedate">Select Actual Due Date</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="policy_effective_date form-check-input" id="selectpolicyeffectivedate"  name="select_product_code">
+                        <label class="form-check-label" for="selecteffectivedate">Select Policy Effective Date</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="next_premium_due_date form-check-input" id="selectnextpremiumduedate"  name="select_product_code">
+                        <label class="form-check-label" for="selectnextpremiumduedate">Select Next Premium Due Date</label>
+                    </div>
+                                        
+                    <div class="form-check">
+                        <input type="checkbox" class="created_on form-check-input" id="selectcreated_on"  name="select_product_code">
+                        <label class="form-check-label" for="selectcreated_on">Select Created Date</label>
+                    </div>
+
+                    <!-- Add more checkboxes for other fields as needed -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Apply and Save</button>
+                <!-- <button type="button" class="btn btn-secondary" id="clearFiltersButton">Clear Filters</button> -->
+                <!-- <button type="button" class="btn btn-primary" onclick="applyAdditionalFilters()">Apply</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Display the selected fields outside the modal -->
+<div id="selectedFiltersDisplay"></div>
+<!-- Container to display and fill in selected fields -->
+<div id="selectedFieldsContainer"></div>
+<script>
+    
+function applyAdditionalFilters() {
+    // Get the selected filter options from the form
+    const form = document.getElementById('additionalFiltersForm');
+    const selectedFields = [];
+    if (form.select_product_code.checked) {
+        selectedFields.push('Product Code');
+    }
+    if (form.select_plan_type.checked) {
+        selectedFields.push('Plan Type');
+    }
+    // You can add more fields in a similar manner
+    // Display the selected fields outside the modal
+    const selectedFieldsDisplay = selectedFields.join(', ');
+    const displayElement = document.getElementById('selectedFiltersDisplay');
+    if (displayElement) {
+        displayElement.textContent = "Selected Fields: " + selectedFieldsDisplay;
+    }
+    // Create input fields for the selected fields and allow users to fill them in
+    const selectedFieldsContainer = document.getElementById('selectedFieldsContainer');
+    if (selectedFieldsContainer) {
+        selectedFieldsContainer.innerHTML = ''; // Clear previous content
+        selectedFields.forEach(fieldName => {
+            const inputField = document.createElement('input');
+            inputField.setAttribute('type', 'text');
+            inputField.setAttribute('placeholder', fieldName);
+            // You can customize the input fields as needed
+            selectedFieldsContainer.appendChild(inputField);
+        });
+    }
+    // Close the modal
+    $('#additionalFiltersModal').modal('hide');
+}
+
+$(document).ready(function() {
+  var queryString='';
+    $('#filterForm').submit(function (e) {
+        queryString = $(this).serialize();
+        // You can now use the queryString to handle the parameters
+        console.log(queryString);
+        });
+
+    var initialFilterStates = {
+        "application_no_class": "application_no_hide",
+        "product_name_class": "product_name_hide",
+        "premium_frequency_class": "premium_frequency_hide",
+        "premium_paying_term_class": "premium_paying_term_hide",
+        "policy_term_class": "policy_term_hide",
+        "annualized_target_premium_class": "annualized_target_premium_hide",
+        "modal_based_premium_class": "modal_based_premium_hide",
+        "year_banding_class": "year_banding_hide",
+        "owner_name_class": "owner_name_hide",
+        "registration_status_as_on_due_date_class": "registration_status_as_on_due_date_hide",
+        "concatenate_with_merging_branch_class": "concatenate_with_merging_branch_hide",
+        "rrm_name_class": "rrm_name_hide",
+        "zrm_name_class": "zrm_name_hide",
+        "cro_zh_name_class": "cro_zh_name_hide",
+        "status_of_policy_class": "status_of_policy_hide",
+        "branch_of_sale_class": "branch_of_sale_hide",
+        "sp_agent_code_class": "sp_agent_code_hide",
+        "commision_amount_class": "commision_amount_hide",
+        "branch_code_class": "branch_code_hide",
+        "branch_name_class": "branch_name_hide",
+        "staff_non_staff_class": "staff_non_staff_hide",
+        "bank_zone_class": "bank_zone_hide",
+        "bank_circle_class": "bank_circle_hide",
+        "filename_class": "filename_hide",
+        "collection_flag_class": "collection_flag_hide",
+        "book_type_class": "book_type_hide",
+        "is_approved_class": "is_approved_hide",
+        "financial_year_class": "financial_year_hide",
+        "is_match_with_channel_partners_class": "is_match_with_channel_partners_hide",
+        "due_month_class": "due_month_hide",
+        "actual_due_date_class": "actual_due_date_hide",
+        "policy_effective_date_class": "policy_effective_date_hide",
+        "next_premium_due_date_class": "next_premium_due_date_hide",
+        "created_on_class": "created_on_hide",
+    }
+
+    // Retrieve filterStates from localStorage
+    var filterStates = localStorage.getItem('filterStates');
+
+    // If filterStates is not in localStorage or is not a valid JSON string, set it to initialFilterStates
+    var filterStateObj;
+    if (!filterStates) {
+        filterStateObj = initialFilterStates;
+        localStorage.setItem('filterStates', JSON.stringify(initialFilterStates));
+    } else {
+        try {
+            filterStateObj = JSON.parse(filterStates);
+        } catch (e) {
+            console.error("Error parsing filterStates from localStorage:", e);
+            filterStateObj = initialFilterStates;
+        }
+    }
+
+    // Function to update filterStates and localStorage
+    function updateFilterState(key, value) {
+        filterStateObj[key] = value;
+        localStorage.setItem('filterStates', JSON.stringify(filterStateObj));
+    }
+
+    // Add change event listeners to your checkboxes
+    $(".application_no").change(function() {
+        if (this.checked) {
+            $("#application_no1").removeClass('application_no_hide');
+            $("#application_no1").addClass('application_no_show');
+            updateFilterState('application_no_class', 'application_no_show');
+        } else {
+            $("#application_no1").removeClass('application_no_show');
+            $("#application_no1").addClass('application_no_hide');
+            $("#application_no").val('');
+            updateFilterState('application_no_class', 'application_no_hide');
+        }
+    });
+    $(".product_name").change(function() {
+        if (this.checked) {
+            $("#product_name1").removeClass('product_name_hide');
+            $("#product_name1").addClass('product_name_show');
+            updateFilterState('product_name_class', 'product_name_show');
+        } else {
+            $("#product_name1").removeClass('product_name_show');
+            $("#product_name1").addClass('product_name_hide');
+            $("#product_name").val('');
+            updateFilterState('product_name_class', 'product_name_hide');
+        }
+    });
+    $(".premium_frequency").change(function() {
+        if (this.checked) {
+            $("#premium_frequency1").removeClass('premium_frequency_hide');
+            $("#premium_frequency1").addClass('premium_frequency_show');
+            updateFilterState('premium_frequency_class', 'premium_frequency_show');
+        } else {
+            $("#premium_frequency1").removeClass('premium_frequency_show');
+            $("#premium_frequency1").addClass('premium_frequency_hide');
+            $("#premium_frequency").val('');
+            updateFilterState('premium_frequency_class', 'premium_frequency_hide');
+        }
+    });
+    $(".premium_paying_term").change(function() {
+        if (this.checked) {
+            $("#premium_paying_term1").removeClass('premium_paying_term_hide');
+            $("#premium_paying_term1").addClass('premium_paying_term_show');
+            updateFilterState('premium_paying_term_class', 'premium_paying_term_show');
+        } else {
+            $("#premium_paying_term1").removeClass('premium_paying_term_show');
+            $("#premium_paying_term1").addClass('premium_paying_term_hide');
+            $("#premium_paying_term").val('');
+            updateFilterState('premium_paying_term_class', 'premium_paying_term_hide');
+        }
+    });
+    $(".policy_term").change(function() {
+        if (this.checked) {
+            $("#policy_term1").removeClass('policy_term_hide');
+            $("#policy_term1").addClass('policy_term_show');
+            updateFilterState('policy_term_class', 'policy_term_show');
+        } else {
+            $("#policy_term1").removeClass('policy_term_show');
+            $("#policy_term1").addClass('policy_term_hide');
+            $("#policy_term").val('');
+            updateFilterState('policy_term_class', 'policy_term_hide');
+        }
+    });
+    $(".annualized_target_premium").change(function() {
+        if (this.checked) {
+            $("#annualized_target_premium1").removeClass('annualized_target_premium_hide');
+            $("#annualized_target_premium1").addClass('annualized_target_premium_show');
+            updateFilterState('annualized_target_premium_class', 'annualized_target_premium_show');
+        } else {
+            $("#annualized_target_premium1").removeClass('annualized_target_premium_show');
+            $("#annualized_target_premium1").addClass('annualized_target_premium_hide');
+            $("#annualized_target_premium").val('');
+            updateFilterState('annualized_target_premium_class', 'annualized_target_premium_hide');
+        }
+    });
+
+    $(".modal_based_premium").change(function() {
+        if (this.checked) {
+            $("#modal_based_premium1").removeClass('modal_based_premium_hide');
+            $("#modal_based_premium1").addClass('modal_based_premium_show');
+            updateFilterState('modal_based_premium_class', 'modal_based_premium_show');
+        } else {
+            $("#modal_based_premium1").removeClass('modal_based_premium_show');
+            $("#modal_based_premium1").addClass('modal_based_premium_hide');
+            $("#modal_based_premium").val('');
+            updateFilterState('modal_based_premium_class', 'modal_based_premium_hide');
+        }
+    });
+
+
+
+
+    $(".year_banding").change(function() {
+        if (this.checked) {
+            $("#year_banding1").removeClass('year_banding_hide');
+            $("#year_banding1").addClass('year_banding_show');
+            $("#year_banding").removeClass('year_banding_hide');
+            updateFilterState('year_banding_class', 'year_banding_show');
+        } else {
+            $("#year_banding1").removeClass('year_banding_show');
+            $("#year_banding1").addClass('year_banding_hide');
+            $("#year_banding").val('');
+            updateFilterState('year_banding_class', 'year_banding_hide');
+        }
+    });
+
+
+
+
+    $(".owner_name").change(function() {
+        if (this.checked) {
+            $("#owner_name1").removeClass('owner_name_hide');
+            $("#owner_name1").addClass('owner_name_show');
+            $("#owner_name").removeClass('owner_name_hide');
+            updateFilterState('owner_name_class', 'owner_name_show');
+        } else {
+            $("#owner_name1").removeClass('owner_name_show');
+            $("#owner_name1").addClass('owner_name_hide');
+            $("#owner_name").val('');
+            updateFilterState('owner_name_class', 'owner_name_hide');
+        }
+    });
+
+    $(".registration_status_as_on_due_date").change(function() {
+        if (this.checked) {
+            $("#registration_status_as_on_due_date1").removeClass('registration_status_as_on_due_date_hide');
+            $("#registration_status_as_on_due_date1").addClass('registration_status_as_on_due_date_show');
+            $("#registration_status_as_on_due_date").removeClass('oregistration_status_as_on_due_date_hide');
+            updateFilterState('registration_status_as_on_due_date_class', 'registration_status_as_on_due_date_show');
+        } else {
+            $("#registration_status_as_on_due_date1").removeClass('registration_status_as_on_due_date_show');
+            $("#registration_status_as_on_due_date1").addClass('registration_status_as_on_due_date_hide');
+            $("#registration_status_as_on_due_date").val('');
+            updateFilterState('registration_status_as_on_due_date_class', 'registration_status_as_on_due_date_hide');
+        }
+    });
+
+    $(".concatenate_with_merging_branch").change(function() {
+        if (this.checked) {
+            $("#concatenate_with_merging_branch1").removeClass('concatenate_with_merging_branch_hide');
+            $("#concatenate_with_merging_branch1").addClass('concatenate_with_merging_branch_show');
+            $("#concatenate_with_merging_branch").removeClass('concatenate_with_merging_branch_hide');
+            updateFilterState('concatenate_with_merging_branch_class', 'concatenate_with_merging_branch_show');
+        } else {
+            $("#concatenate_with_merging_branch1").removeClass('concatenate_with_merging_branch_show');
+            $("#concatenate_with_merging_branch1").addClass('concatenate_with_merging_branch_hide');
+            $("#concatenate_with_merging_branch").val('');
+            updateFilterState('concatenate_with_merging_branch_class', 'concatenate_with_merging_branch_hide');
+        }
+    });
+
+    $(".rrm_name").change(function() {
+        if (this.checked) {
+            $("#rrm_name1").removeClass('rrm_name_hide');
+            $("#rrm_name1").addClass('rrm_name_show');
+            $("#rrm_name").removeClass('rrm_name_hide');
+            updateFilterState('rrm_name_class', 'rrm_name_show');
+        } else {
+            $("#rrm_name1").removeClass('rrm_name_show');
+            $("#rrm_name1").addClass('rrm_name_hide');
+            $("#rrm_name").val('');
+            updateFilterState('rrm_name_class', 'rrm_name_hide');
+        }
+    });
+
+    $(".zrm_name").change(function() {
+        if (this.checked) {
+            $("#zrm_name1").removeClass('zrm_name_hide');
+            $("#zrm_name1").addClass('zrm_name_show');
+            $("#zrm_name").removeClass('zrm_name_hide');
+            updateFilterState('zrm_name_class', 'zrm_name_show');
+        } else {
+            $("#zrm_name1").removeClass('zrm_name_show');
+            $("#zrm_name1").addClass('zrm_name_hide');
+            $("#zrm_name").val('');
+            updateFilterState('zrm_name_class', 'zrm_name_hide');
+        }
+    });
+
+
+    $(".cro_zh_name").change(function() {
+        if (this.checked) {
+            $("#cro_zh_name1").removeClass('cro_zh_name_hide');
+            $("#cro_zh_name1").addClass('cro_zh_name_show');
+            $("#cro_zh_name").removeClass('cro_zh_name_hide');
+            updateFilterState('cro_zh_name_class', 'cro_zh_name_show');
+        } else {
+            $("#cro_zh_name1").removeClass('cro_zh_name_show');
+            $("#cro_zh_name1").addClass('cro_zh_name_hide');
+            $("#cro_zh_name").val('');
+            updateFilterState('cro_zh_name_class', 'cro_zh_name_hide');
+        }
+    });
+
+    $(".status_of_policy").change(function() {
+        if (this.checked) {
+            $("#status_of_policy1").removeClass('status_of_policy_hide');
+            $("#status_of_policy1").addClass('status_of_policy_show');
+            $("#status_of_policy").removeClass('status_of_policy_hide');
+            updateFilterState('status_of_policy_class', 'status_of_policy_show');
+        } else {
+            $("#status_of_policy1").removeClass('status_of_policy_show');
+            $("#status_of_policy1").addClass('status_of_policy_hide');
+            $("#status_of_policy").val('');
+            updateFilterState('status_of_policy_class', 'status_of_policy_hide');
+        }
+    });
+
+
+    $(".branch_of_sale").change(function() {
+        if (this.checked) {
+            $("#branch_of_sale1").removeClass('branch_of_sale_hide');
+            $("#branch_of_sale1").addClass('branch_of_sale_show');
+            $("#branch_of_sale").removeClass('branch_of_sale_hide');
+            updateFilterState('branch_of_sale_class', 'branch_of_sale_show');
+        } else {
+            $("#branch_of_sale1").removeClass('branch_of_sale_show');
+            $("#branch_of_sale1").addClass('branch_of_sale_hide');
+            $("#branch_of_sale").val('');
+            updateFilterState('branch_of_sale_class', 'branch_of_sale_hide');
+        }
+    });
+
+    $(".sp_agent_code").change(function() {
+        if (this.checked) {
+            $("#sp_agent_code1").removeClass('sp_agent_code_hide');
+            $("#sp_agent_code1").addClass('sp_agent_code_show');
+            $("#sp_agent_code").removeClass('sp_agent_code_hide');
+            updateFilterState('sp_agent_code_class', 'sp_agent_code_show');
+        } else {
+            $("#sp_agent_code1").removeClass('sp_agent_code_show');
+            $("#sp_agent_code1").addClass('sp_agent_code_hide');
+            $("#sp_agent_code").val('');
+            updateFilterState('sp_agent_code_class', 'sp_agent_code_hide');
+        }
+    });
+
+    $(".branch_code").change(function() {
+        if (this.checked) {
+            $("#branch_code1").removeClass('branch_code_hide');
+            $("#branch_code1").addClass('branch_code_show');
+            $("#branch_code").removeClass('branch_code_hide');
+            updateFilterState('branch_code_class', 'branch_code_show');
+        } else {
+            $("#branch_code_code1").removeClass('branch_code_show');
+            $("#branch_code1").addClass('branch_code_hide');
+            $("#branch_code").val('');
+            updateFilterState('branch_code_class', 'branch_code_hide');
+        }
+    });
+
+    $(".commision_amount").change(function() {
+        if (this.checked) {
+            $("#commision_amount1").removeClass('commision_amount_hide');
+            $("#commision_amount1").addClass('commision_amount_show');
+            $("#commision_amount").removeClass('commision_amount_hide');
+            updateFilterState('commision_amount_class', 'commision_amount_show');
+        } else {
+            $("#commision_amount_code1").removeClass('commision_amount_show');
+            $("#commision_amount1").addClass('commision_amount_hide');
+            $("#commision_amount").val('');
+            updateFilterState('commision_amount_class', 'commision_amount_hide');
+        }
+    });
+
+    $(".branch_name").change(function() {
+        if (this.checked) {
+            $("#branch_name1").removeClass('branch_name_hide');
+            $("#branch_name1").addClass('branch_name_show');
+            $("#branch_name").removeClass('branch_name_hide');
+            updateFilterState('branch_name_class', 'branch_name_show');
+        } else {
+            $("#branch_name_code1").removeClass('branch_name_show');
+            $("#branch_name1").addClass('branch_name_hide');
+            $("#branch_name").val('');
+            updateFilterState('branch_name_class', 'branch_name_hide');
+        }
+    });
+
+    $(".staff_non_staff").change(function() {
+        if (this.checked) {
+            $("#staff_non_staff1").removeClass('staff_non_staff_hide');
+            $("#staff_non_staff1").addClass('staff_non_staff_show');
+            $("#staff_non_staff").removeClass('staff_non_staff_hide');
+            updateFilterState('staff_non_staff_class', 'staff_non_staff_show');
+        } else {
+            $("#staff_non_staff_code1").removeClass('staff_non_staff_show');
+            $("#staff_non_staff1").addClass('staff_non_staff_hide');
+            $("#staff_non_staff").val('');
+            updateFilterState('staff_non_staff_class', 'staff_non_staff_hide');
+        }
+    });
+
+
+    $(".bank_zone").change(function() {
+        if (this.checked) {
+            $("#bank_zone1").removeClass('bank_zone_hide');
+            $("#bank_zone1").addClass('bank_zone_show');
+            $("#bank_zone").removeClass('bank_zone_hide');
+            updateFilterState('bank_zone_class', 'bank_zone_show');
+        } else {
+            $("#bank_zone1").removeClass('bank_zone_show');
+            $("#bank_zone1").addClass('bank_zone_hide');
+            $("#bank_zone").val('');
+            updateFilterState('bank_zone_class', 'bank_zone_hide');
+        }
+    });
+
+    $(".bank_circle").change(function() {
+        if (this.checked) {
+            $("#bank_circle1").removeClass('bank_circle_hide');
+            $("#bank_circle1").addClass('bank_circle_show');
+            $("#bank_circle").removeClass('bank_circle_hide');
+            updateFilterState('bank_circle_class', 'bank_circle_show');
+        } else {
+            $("#bank_circle1").removeClass('bank_circle_show');
+            $("#bank_circle1").addClass('bank_circle_hide');
+            $("#bank_circle").val('');
+            updateFilterState('bank_circle_class', 'bank_circle_hide');
+        }
+    });
+
+    $(".filename").change(function() {
+        if (this.checked) {
+            $("#filename1").removeClass('filename_hide');
+            $("#filename1").addClass('filename_show');
+            updateFilterState('filename_class', 'filename_show');
+        } else {
+            $("#filename1").removeClass('filename_show');
+            $("#filename1").addClass('filename_hide');
+            $("#filename").val('');
+            updateFilterState('filename_class', 'filename_hide');
+        }
+    });
+
+    $(".collection_flag").change(function() {
+        if (this.checked) {
+            $("#collection_flag1").removeClass('collection_flag_hide');
+            $("#collection_flag1").addClass('collection_flag_show');
+            $("#collection_flag").removeClass('collection_flag_hide');
+            updateFilterState('collection_flag_class', 'collection_flag_show');
+        } else {
+            $("#collection_flag1").removeClass('collection_flag_show');
+            $("#collection_flag1").addClass('collection_flag_hide');
+            $("#collection_flag").val('');
+            updateFilterState('collection_flag_class', 'collection_flag_hide');
+        }
+    });
+
+
+    $(".book_type").change(function() {
+        if (this.checked) {
+            $("#book_type1").removeClass('book_type_hide');
+            $("#book_type1").addClass('book_type_show');
+            $("#book_type").removeClass('book_type_hide');
+            updateFilterState('book_type_class', 'book_type_show');
+        } else {
+            $("#book_type1").removeClass('book_type_show');
+            $("#book_type1").addClass('book_type_hide');
+            $("#book_type").val('');
+            updateFilterState('book_type_class', 'book_type_hide');
+        }
+    });
+
+    $(".is_approved").change(function() {
+        if (this.checked) {
+            $("#approved_by1").removeClass('approved_by_hide');
+            $("#approved_by1").addClass('approved_by_show');
+            $("#is_approved").removeClass('is_approved_hide');
+            updateFilterState('approved_by_class', 'approved_by_show');
+        } else {
+            $("#approved_by1").removeClass('approved_by_show');
+            $("#approved_by1").addClass('approved_by_hide');
+            $("#approved_by").val('');
+            updateFilterState('approved_by_class', 'approved_by_hide');
+        }
+    });
+
+
+
+    
+    $(".financial_year").change(function() {
+        if (this.checked) {
+            $("#financial_year1").removeClass('financial_year_hide');
+            $("#financial_year1").addClass('financial_year_show');
+            $("#financial_year").removeClass('financial_year_hide');
+            updateFilterState('financial_year_class', 'financial_year_show');
+        } else {
+            $("#financial_year1").removeClass('financial_year_show');
+            $("#financial_year1").addClass('financial_year_hide');
+            $("#financial_year").val('');
+            updateFilterState('financial_year_class', 'financial_year_hide');
+        }
+    });
+
+    
+    $(".is_match_with_channel_partners").change(function() {
+        if (this.checked) {
+            $("#is_match_with_channel_partners1").removeClass('is_match_with_channel_partners_hide');
+            $("#is_match_with_channel_partners1").addClass('is_match_with_channel_partners_show');
+            $("#is_match_with_channel_partners").removeClass('is_match_with_channel_partners_hide');
+            updateFilterState('is_match_with_channel_partners_class', 'is_match_with_channel_partners_show');
+        } else {
+            $("#is_match_with_channel_partners1").removeClass('is_match_with_channel_partners_show');
+            $("#is_match_with_channel_partners1").addClass('is_match_with_channel_partners_hide');
+            $("#is_match_with_channel_partners").val('');
+            updateFilterState('is_match_with_channel_partners_class', 'is_match_with_channel_partners_hide');
+        }
+    });
+
+    $(".due_month").change(function() {
+        if (this.checked) {
+            $("#due_month1").removeClass('due_month_hide');
+            $("#due_month1").addClass('due_month_show');
+            $("#due_month").removeClass('due_month_hide');
+            updateFilterState('due_month_class', 'due_month_show');
+        } else {
+            $("#due_month1").removeClass('due_month_show');
+            $("#due_month1").addClass('due_month_hide');
+            $("#due_month").val('');
+            updateFilterState('due_month_class', 'due_month_hide');
+        }
+        });
+
+    $(".actual_due_date").change(function() {
+        if (this.checked) {
+            $("#actual_due_date1").removeClass('actual_due_date_hide');
+            $("#actual_due_date1").addClass('actual_due_date_show');
+            $("#actual_due_date").removeClass('actual_due_date_hide');
+            updateFilterState('actual_due_date_class', 'actual_due_date_show');
+        } else {
+            $("#actual_due_date1").removeClass('actual_due_date_show');
+            $("#actual_due_date1").addClass('actual_due_date_hide');
+            $("#actual_due_date").val('');
+            updateFilterState('actual_due_date_class', 'actual_due_date_hide');
+        }
+        });
+
+    $(".policy_effective_date").change(function() {
+        if (this.checked) {
+            $("#policy_effective_date1").removeClass('policy_effective_date_hide');
+            $("#policy_effective_date1").addClass('policy_effective_date_show');
+            $("#policy_effective_date").removeClass('policy_effective_date_hide');
+            updateFilterState('policy_effective_date_class', 'policy_effective_date_show');
+        } else {
+            $("#policy_effective_date1").removeClass('policy_effective_date_show');
+            $("#policy_effective_date1").addClass('policy_effective_date_hide');
+            $("#policy_effective_date").val('');
+            updateFilterState('policy_effective_date_class', 'policy_effective_date_hide');
+        }
+        });
+
+    $(".next_premium_due_date").change(function() {
+        if (this.checked) {
+            $("#next_premium_due_date1").removeClass('next_premium_due_date_hide');
+            $("#next_premium_due_date1").addClass('next_premium_due_date_show');
+            $("#next_premium_due_date").removeClass('next_premium_due_date_hide');
+            updateFilterState('next_premium_due_date_class', 'next_premium_due_date_show');
+        } else {
+            $("#next_premium_due_date1").removeClass('next_premium_due_date_show');
+            $("#next_premium_due_date1").addClass('next_premium_due_date_hide');
+            $("#next_premium_due_date").val('');
+            updateFilterState('next_premium_due_date_class', 'next_premium_due_date_hide');
+        }
+    });
+    $(".created_on").change(function() {
+        if (this.checked) {
+            $("#created_on1").removeClass('created_on_hide');
+            $("#created_on1").addClass('created_on_show');
+            $("#created_on").removeClass('created_on_hide');
+            updateFilterState('created_on_class', 'created_on_show');
+        } else {
+            $("#created_on1").removeClass('created_on_show');
+            $("#created_on1").addClass('created_on_hide');
+            $("#created_on").val('');
+            updateFilterState('created_on_class', 'created_on_hide');
+        }
+    });
+
+
+    // Initial setup based on filterStateObj values
+    $("#application_no1").addClass(filterStateObj.application_no_class);
+    $(".application_no").prop('checked', filterStateObj.application_no_class === 'application_no_show');
+
+    $("#product_name1").addClass(filterStateObj.product_name_class);
+    $(".product_name").prop('checked', filterStateObj.product_name_class === 'product_name_show');
+
+    $("#premium_frequency1").addClass(filterStateObj.premium_frequency_class);
+    $(".premium_frequency").prop('checked', filterStateObj.premium_frequency_class === 'premium_frequency_show');
+
+    $("#premium_paying_term1").addClass(filterStateObj.premium_paying_term_class);
+    $(".premium_paying_term").prop('checked', filterStateObj.premium_paying_term_class === 'premium_paying_term_show');
+
+    $("#policy_term1").addClass(filterStateObj.policy_term_class);
+    $(".policy_term").prop('checked', filterStateObj.policy_term_class === 'policy_term_show');
+
+    $("#annualized_target_premium1").addClass(filterStateObj.annualized_target_premium_class);
+    $(".annualized_target_premium").prop('checked', filterStateObj.annualized_target_premium_class === 'annualized_target_premium_show');
+
+    $("#modal_based_premium1").addClass(filterStateObj.modal_based_premium_class);
+    $(".modal_based_premium").prop('checked', filterStateObj.modal_based_premium_class === 'modal_based_premium_show');
+
+
+    $("#year_banding1").addClass(filterStateObj.year_banding_class);
+    $(".year_banding").prop('checked', filterStateObj.year_banding_class === 'year_banding_show');
+
+
+    $("#owner_name1").addClass(filterStateObj.owner_name_class);
+    $(".owner_name").prop('checked', filterStateObj.owner_name_class === 'owner_name_show');
+
+    $("#registration_status_as_on_due_date1").addClass(filterStateObj.registration_status_as_on_due_date_class);
+    $(".registration_status_as_on_due_date").prop('checked', filterStateObj.registration_status_as_on_due_date_class === 'registration_status_as_on_due_date_show');
+
+
+    $("#concatenate_with_merging_branch1").addClass(filterStateObj.concatenate_with_merging_branch_class);
+    $(".concatenate_with_merging_branch").prop('checked', filterStateObj.concatenate_with_merging_branch_class === 'concatenate_with_merging_branch_show');
+
+
+    $("#rrm_name1").addClass(filterStateObj.rrm_name_class);
+    $(".rrm_name").prop('checked', filterStateObj.rrm_name_class === 'rrm_name_show');
+
+    $("#zrm_name1").addClass(filterStateObj.zrm_name_class);
+    $(".zrm_name").prop('checked', filterStateObj.zrm_name_class === 'zrm_name_show');
+
+    $("#cro_zh_name1").addClass(filterStateObj.cro_zh_name_class);
+    $(".cro_zh_name").prop('checked', filterStateObj.cro_zh_name_class === 'cro_zh_name_show');
+
+    $("#status_of_policy1").addClass(filterStateObj.status_of_policy_class);
+    $(".status_of_policy").prop('checked', filterStateObj.status_of_policy_class === 'status_of_policy_show');
+
+    $("#branch_of_sale1").addClass(filterStateObj.branch_of_sale_class);
+    $(".branch_of_sale").prop('checked', filterStateObj.branch_of_sale_class === 'branch_of_sale_show');
+
+    $("#sp_agent_code1").addClass(filterStateObj.sp_agent_code_class);
+    $(".sp_agent_code").prop('checked', filterStateObj.sp_agent_code_class === 'sp_agent_code_show');
+
+    $("#commision_amount1").addClass(filterStateObj.commision_amount_class);
+    $(".commision_amount").prop('checked', filterStateObj.commision_amount_class === 'commision_amount_show');
+
+
+    $("#branch_code1").addClass(filterStateObj.branch_code_class);
+    $(".branch_code").prop('checked', filterStateObj.branch_code_class === 'branch_code_show');
+
+    $("#branch_name1").addClass(filterStateObj.branch_name_class);
+    $(".branch_name").prop('checked', filterStateObj.branch_name_class === 'branch_name_show');
+
+    $("#staff_non_staff1").addClass(filterStateObj.staff_non_staff_class);
+    $(".staff_non_staff").prop('checked', filterStateObj.staff_non_staff_class === 'staff_non_staff_show');
+
+    $("#bank_zone1").addClass(filterStateObj.bank_zone_class);
+    $(".bank_zone").prop('checked', filterStateObj.bank_zone_class === 'bank_zone_show');
+    
+    $("#bank_circle1").addClass(filterStateObj.bank_circle_class);
+    $(".bank_circle").prop('checked', filterStateObj.bank_circle_class === 'bank_circle_show');
+
+    $("#filename1").addClass(filterStateObj.filename_class);
+    $(".filename").prop('checked', filterStateObj.filename_class === 'filename_show');
+
+    $("#collection_flag1").addClass(filterStateObj.collection_flag_class);
+    $(".collection_flag").prop('checked', filterStateObj.collection_flag_class === 'collection_flag_show');
+
+
+    $("#book_type1").addClass(filterStateObj.book_type_class);
+    $(".book_type").prop('checked', filterStateObj.book_type_class === 'book_type_show');
+
+    $("#is_approved1").addClass(filterStateObj.is_approved_class);
+    $(".is_approved").prop('checked', filterStateObj.is_approved_class === 'is_approved_show');
+
+
+    $("#financial_year1").addClass(filterStateObj.financial_year_class);
+    $(".financial_year").prop('checked', filterStateObj.financial_year_class === 'financial_year_show');
+
+    $("#is_match_with_channel_partners1").addClass(filterStateObj.is_match_with_channel_partners_class);
+    $(".is_match_with_channel_partners").prop('checked', filterStateObj.is_match_with_channel_partners_class === 'is_match_with_channel_partners_show');
+
+
+    $("#due_month1").addClass(filterStateObj.due_month_class);
+    $(".due_month").prop('checked', filterStateObj.due_month_class === 'due_month_show');
+
+    $("#actual_due_date1").addClass(filterStateObj.actual_due_date_class);
+    $(".actual_due_date").prop('checked', filterStateObj.actual_due_date_class === 'actual_due_date_show');
+
+    $("#policy_effective_date1").addClass(filterStateObj.policy_effective_date_class);
+    $(".policy_effective_date").prop('checked', filterStateObj.policy_effective_date_class === 'policy_effective_date_show');
+
+
+    $("#next_premium_due_date1").addClass(filterStateObj.next_premium_due_date_class);
+    $(".next_premium_due_date").prop('checked', filterStateObj.next_premium_due_date_class === 'next_premium_due_date_show');
+
+    $("#created_on1").addClass(filterStateObj.created_on_class);
+    $(".created_on").prop('checked', filterStateObj.created_on_class === 'created_on_show');
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+        // Add an event listener to the clearFiltersButton
+        const clearFiltersButton = document.getElementById("clearFiltersButton");
+        clearFiltersButton.addEventListener("click", function () {
+            // Get all the checkboxes within the form
+            const checkboxes = document.querySelectorAll('#additionalFiltersForm input[type="checkbox"]');
+            
+            // Uncheck all the checkboxes
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = false;
+            });
+        });
+    });
+    document.getElementById('resetFiltersButton').addEventListener('click', function () {
+    // Clear all filter values by setting their values to an empty string
+    document.querySelectorAll('.form-control').forEach(function (input) {
+        input.value = '';
+    });
+
+    // Uncheck all checkboxes within the modal
+    document.querySelectorAll('.modal .form-check-input').forEach(function (checkbox) {
+        checkbox.checked = false;
+    });
+
+    // Reload the page to reset the filters
+    document.getElementById('filterForm').submit();
+});
+
+
+
+</script>

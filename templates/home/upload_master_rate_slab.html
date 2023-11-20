@@ -1,0 +1,178 @@
+
+{% extends "base.html" %}
+{% load user_permissions %}
+{% load tz %}
+{% block title %} Upload Master Rate Slab {% endblock %}
+{% block content %}
+<!-- Remove Duplicacy -->
+{% include 'includes/sidebar.html' %}
+{% include 'includes/navigation.html' %}
+<!-- [ Main Content ] start -->
+<style>
+    .custom-form-field {
+        width: 150px; /* Adjust the width as needed */
+    }
+</style>
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <!-- [ Hover-table ] start -->
+            <div class="col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div><h3>Upload Commission Slab</h3></div>
+                        <br>
+                        <div class="form-row">
+                            <div class="col-sm-1.5">
+                                <button type="button" class="btn btn-primary"><a href="https://test0227.s3.ap-south-1.amazonaws.com/commission_slab_format.xlsx" class="text-color-white" >Download Template</a></button>
+                            </div>
+                            <form method="post" action="{% url 'upload_master_file' %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 pt-1 pl-4">
+                                        <input type="file" class="form-control-file" id="file" name="file" value="">
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <select class="form-control" id="operation_action" name="action">
+                                            <option value="" selected disabled>Select Action</option>
+                                            <option value="UPLOAD">NEW</option>
+                                            <option value="APPEND">APPEND</option>
+                                            <!-- Add more options as needed -->
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <button type="submit" class="btn btn-danger m-0"><i class="bi fa-1.5x bi-filter m-0" ></i> Upload</button>
+                                    </div>
+                                    <div class="form-group col-md-1">
+                                        <button type="button" class="btn btn-outline-secondary btn-sm" name="reset" id="refresh-button" style="color: rgb(255, 0, 0); height: 42px; ">
+                                            <i class="bi bi-arrow-clockwise fa-2x bold-icon mt-2"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="col-sm-4">
+                                {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-1">
+                    <h2>Data Upload</h2>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <!-- <th
+                                        class="bg-color-orange text-color-white">
+                                        S. No
+                                    </th> -->
+
+                                    <th
+                                       class="p-3 bg-info" style="font-size: 15px;">
+                                        Action
+                                    </th>
+                                    <th
+                                        class="p-3 bg-info" style="font-size: 15px;">
+                                        Total</th>
+                                    <th
+                                        class="p-3 bg-info" style="font-size: 15px;">Valid
+
+                                    </th>
+                                    <th
+                                        class="p-3 bg-info" style="font-size: 15px;">Invalid
+
+                                    </th>
+                                    <th
+                                        class="p-3 bg-info" style="font-size: 15px;">
+                                        Status</th>
+                                    <th
+                                        class="p-3 bg-info" style="font-size: 15px;">Is
+                                        Approved
+                                    </th>
+                                    <th
+                                        class="p-3 bg-info" style="font-size: 15px;">
+                                        Approved By</th>
+                                    <th
+                                        class="p-3 bg-info" style="font-size: 15px;">Approved
+                                        Date
+                                    </th>
+                                    <th
+                                        class="p-3 bg-info" style="font-size: 15px;">Started
+                                        At </th>
+                                    <th
+                                        class="p-3 bg-info" style="font-size: 15px;">Ended
+                                        At
+                                    </th>
+
+                                    <th class="p-3 bg-info" style="font-size: 15px;">Data</th>
+                                    <th class="p-3 bg-info" style="font-size: 15px;">Error</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for header in data_upload_task_table %}
+                                <tr style="font-size: 14px;">
+                                    <!-- <th scope="row">{{forloop.counter}}</th> -->
+                                    <td>{{header.action}}</td>
+                                    <td>{{header.total_records}}</td>
+                                    <td>{{header.valid_records}}</td>
+                                    <td>{{header.error_records}}</td>
+                                    <td>{{header.status}}</td>{% if header.is_approved == True %}
+                                    <td>Approved</td>
+                                    {% elif header.is_approved == None %}
+                                    <td>N/A</td>
+                                    {% else %}
+                                    <td>Not Approved</td>
+                                    {% endif %}
+
+                                    {% if header.approved_by == None %}
+                                      <td>N/A</td>
+                                      {%else%}
+                                      <td>{{ header.approved_by }}</td>
+                                    {% endif %}
+
+                                    {% if header.approved_on == None %}
+                                    <td>N/A</td>
+                                    {%else%}
+                                    <td>{{ header.approved_on|date:"Y-m-d h:i:s A" }}</td>
+                                    {% endif %}
+                                    <td>{{ header.started_at|timezone:"Asia/Kolkata"|date:"Y-m-d h:i:s" }}</td>
+                                    <td>{{ header.ended_at|timezone:"Asia/Kolkata"|date:"Y-m-d h:i:s" }}</td>
+                                    <!-- <td>{{header.started_at|date:"Y-m-d H:i:s A"}}</td>
+                                    <td>{{header.ended_at|date:"Y-m-d H:i:s A"}}</td> -->
+                                    <td><a href="{{header.file.url}}" download><i
+                                        class="bi bi-download"></i></a></td>
+                                        {% if header.error_records != 0  %}
+                                        <td><a href="{{header.error_file.url}}" download><i
+                                            class="bi bi-download"></i></a></td>
+                                        {% else %}
+                                        <td></td>
+                                        {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% include 'home/pagination/paginate.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    // Add an event listener for the refresh button click
+    document.getElementById('refresh-button').addEventListener('click', function () {
+        // Reload the current page when the button is clicked
+        window.location.href = "http://13.233.156.126/hub/chsbc/upload_master_file/";   
+        });
+</script>
+{% endblock content %}
+<!-- Specific Page JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

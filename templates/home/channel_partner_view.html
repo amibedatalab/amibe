@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load user_permissions %}
+
+{% block title %} Channel Partner {% endblock %}
+
+{% block content %}
+  <!-- Remove Duplicacy -->
+  {% include 'includes/sidebar.html' %}
+  {% include 'includes/navigation.html' %}
+  <!-- [ Main Content ] start -->
+
+  </style>
+  <section class="pcoded-main-container">
+    <div class="pcoded-content">
+
+      {% include 'home/filters/channel_partner_filter.html' %}
+      <!-- [ Main Content ] start -->
+      <div class="row">
+        <!-- [ Hover-table ] start -->
+        <div class="col-md-9 col-sm-9">
+          <div class="card">
+          <div class="card-body">
+            <h2>Channel Partners</h2>
+            <div class="d-flex justify-content-end">
+              <span style="display: inline-block; margin-right: 10px;"><h4 style="color: rgb(0, 153, 255);"><span style="font-weight: normal;">Total Records:</span> {{total_records}}</h4></span>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Plan_code</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Channel_code</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Concatenate</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Rule_name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for header in model_objs %}
+                    <tr style="font-size: 14px;">
+                      <td>{{ header.plan_code }}</td>
+                      <td>{{ header.channel_code }}</td>
+                      <td>{{ header.concatenate }}</td>
+                      <td>{{ header.rule_name }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {% include 'home/pagination/master_paginate.html' %}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+{% endblock %}
+<!-- Specific Page JS goes HERE -->
+{% block javascripts %}
+{% endblock %}

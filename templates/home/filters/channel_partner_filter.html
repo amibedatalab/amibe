@@ -1,0 +1,20 @@
+<form method="GET" action="{% url 'channel_partner_records' %}">
+    <div class="form-row">
+    <div class="form-group col-md-2">
+        <input type="text" class="form-control" placeholder="plan_code" id="plan_code" name="plan_code" value="{{ request.GET.plan_code }}">
+    </div>
+    <div class="form-group col-md-2">
+        <input type="text" class="form-control" placeholder="channel_code" id="channel_code" name="channel_code" value="{{ request.GET.channel_code }}">
+    </div>
+    <div class="form-group col-md-2">
+        <input type="text" class="form-control" placeholder="concatenate" id="concatenate" name="concatenate" value="{{ request.GET.concatenate }}">
+    </div>
+    <div class="form-group col-md-2">
+        <input type="text" class="form-control" placeholder="rule_name" id="rule_name" name="rule_name" value="{{ request.GET.rule_name }}">
+    </div>
+    <div class="form-group col-md-2">
+        <button type="submit" class="btn btn-danger m-0"><i class="bi fa-1.5x bi-filter m-0" ></i> Apply Filters</button>
+    </div>
+    </div>
+</form>
+

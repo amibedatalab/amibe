@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      Canarahsbc - {% block title %}
+      {% endblock %}
+    </title>
+
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Codedthemes" />
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="{% static 'img/pelocal-hub/pelocal-logo.png' %}" type="image/x-icon" />
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/custom_css/index.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'assets/custom_css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap-icon.css' %}" />
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/bootstrap/jquery.js"></script>
+    <script src="/static/bootstrap/bootstrap.min.js"></script>
+
+
+
+    <!-- Specific CSS goes HERE -->
+      {% block stylesheets %}
+      {% endblock %}
+    <!-- Specific CSS goes HERE -->
+  </head>
+  <body class="">
+
+    <div id="main-loader" class="d-none">
+      <div class="spinner-border spinner-lg text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+  </div>
+    <!-- [ Pre-loader ] End -->
+
+    {% block content %}
+    {% endblock %}
+    {% include 'includes/scripts.html' %}
+  </body>
+</html>

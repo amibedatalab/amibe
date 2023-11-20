@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load user_permissions %}
+{% block title %}
+  Master View Report
+{% endblock %}
+{% block content %}
+  <!-- Remove Duplicacy -->
+  {% include 'includes/sidebar.html' %}
+  {% include 'includes/navigation.html' %}
+  <!-- [ Main Content ] start -->
+  <style>
+    .custom-form-field {
+      width: 150px; /* Adjust the width as needed */
+    }
+  </style>
+  <section class="pcoded-main-container">
+    <div class="pcoded-content">
+      {% include 'home/filters/commission_slab_filters_dashboard.html' %}
+      <!-- [ Main Content ] start -->
+      <div class="row">
+        <!-- [ Hover-table ] start -->
+        <div class="col-md-12 col-sm-12">
+          <div class="card">
+            <div class="card-body">
+		<div class="row">
+              <div class="col-md-6">
+                  <span style="display: inline-block; margin-right: 10px;"><h2>Data View</h2></span>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex justify-content-end">
+                    <span style="display: inline-block; margin-right: 10px;"><h4 style="color: rgb(0, 153, 255);"><span style="font-weight: normal;">Total Records:</span> {{total_records}}</h4></span>
+                </div>
+            </div>
+          </div>
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;">
+                        Product<br /> Name
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        Product <br />Code
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        Year<br />From
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        Year<br />To
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        PT<br />From
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        PT <br />To
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        PPT<br /> From
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        PPT <br />To
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        Premium <br />From
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        Premium <br />To
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        APE <br />From
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        APE <br />To
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        Staff/<br />Non Staff
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        Rule <br />Name
+                      </th>
+                      <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">Rate <br>(%) </th>
+                      {% comment %} <th class="p-3 bg-info" style="font-size: 15px;text-align: center;">
+                        <a id="download-link" href="#" download="error file.xlsx"><i class="bi bi-download text-color-white"></i></a>
+                      </th> {% endcomment %}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for header in model_obj %}
+                      <tr style="font-size: 15px;">
+                        <!-- <th scope="row">{{forloop.counter}}</th> -->
+                        <td style="max-width: 200px; word-wrap: break-word; white-space: normal;">{{ header.product_name }}</td>
+                        <td>{{ header.product_code }}</td>
+                        <td>{{ header.year_from }}</td>
+                        <td>{{ header.year_to }}</td>
+                        <td>{{ header.pt_from }}</td>
+                        <td>{{ header.pt_to }}</td>
+                        <td>{{ header.ppt_from }}</td>
+                        <td>{{ header.ppt_to }}</td>
+                        <td>{{ header.premium_from }}</td>
+                        <td>{{ header.premium_to }}</td>
+                        <td>{{ header.ape_from }}</td>
+                        <td>{{ header.ape_to }}</td>
+                        <td>{{ header.is_staff }}</td>
+                        <td>{{ header.rule_name }}</td>
+                        <td>{{ header.rate }}</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              {% include 'home/pagination/master_paginate.html' %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+<!-- Specific Page JS goes HERE -->
+{% block javascripts %}
+
+{% endblock %}

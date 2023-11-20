@@ -1,0 +1,17 @@
+<div class="pagination">
+    <p class="step-links">
+        {% if page.has_previous %}
+        <div class="pt-1">
+            <a href="?{% for key, value in filter_params.items %}{% if forloop.first %}{% else %}&{% endif %}{{ key }}={{ value }}{% endfor %}&page=1">&laquo;&laquo;&nbsp;</a>
+            <a href="?{% for key, value in filter_params.items %}{% if forloop.first %}{% else %}&{% endif %}{{ key }}={{ value }}{% endfor %}&page={{ page.previous_page_number }}">&laquo;&nbsp;&nbsp;</a>
+        </div>
+        {% endif %}
+            <span class="page-link">Page {{ page.number }} of {{ page.paginator.num_pages }}</span>
+        {% if page.has_next %}
+        <div class="pt-1">
+            <a href="?{% for key, value in filter_params.items %}{% if forloop.first %}{% else %}&{% endif %}{{ key }}={{ value }}{% endfor %}&page={{ page.next_page_number }}">&nbsp;&nbsp;&raquo;&nbsp;</a>
+            <a href="?{% for key, value in filter_params.items %}{% if forloop.first %}{% else %}&{% endif %}{{ key }}={{ value }}{% endfor %}&page={{ page.paginator.num_pages }}">&raquo;&raquo;</a>
+        </div>
+        {% endif %}
+    </p>
+</div>

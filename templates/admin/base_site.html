@@ -1,0 +1,36 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ site_header }}{% endblock %}
+
+{% load static %}
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <img
+            src="{% static 'img/pelocal-hub/pelocal-logo.png' %}"
+            width="140"
+            height="45"
+            style="margin-right: 20px"
+            alt="Canara-Hub Logo"
+        >
+    </a>
+    <a href="{% url 'admin:index' %}">{% block site_title %}{{ site_title }}{% endblock %}</a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}
+<style>
+.module h2, .module caption, .inline-group h2,#header
+{
+    text-align: left;
+    font-weight: bold;
+    background: #737e86;
+    font-size: medium;
+}
+#user-tools
+{
+    font-size: medium;
+}
+
+</style>
+{% endblock %}

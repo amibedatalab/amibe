@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load tz %}
+{% block title %} Upload Collection Flag {% endblock %}
+
+
+{% block content %}
+  <!-- Remove Duplicacy -->
+  {% include 'includes/sidebar.html' %}
+  {% include 'includes/navigation.html' %}
+  <!-- [ Main Content ] start -->
+  <style>
+    .custom-form-field {
+      width: 150px; /* Adjust the width as needed */
+    }
+  </style>
+  <section class="pcoded-main-container">
+    <div class="pcoded-content">
+      <!-- [ Main Content ] start -->
+      <div class="row">
+        <!-- [ Hover-table ] start -->
+        <div class="col-md-12 col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <div>
+                <h3>Upload Collection Flag</h3>
+              </div>
+              <br>
+              <div class="form-row">
+                <div class="col-md-1.5">
+                  <button type="button" class="btn btn-primary"><a href="https://test0227.s3.ap-south-1.amazonaws.com/collection_flag_format.xlsx" class="text-color-white" >Download Template</a></button>
+                </div>
+                <form method="post" action="{% url 'upload_collection_flag' %}" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-row">
+                  <div class="form-group col-md-8 pl-4 pt-1 pr-2">
+                      <input type="file" class="form-control-file" id="file" name="file" value="">
+                  </div>
+                  <div class="form-group col-md-4">
+                      <button type="submit" class="btn btn-danger m-0"><i class="bi fa-1.5x bi-filter m-0" ></i> Upload</button>
+                  </div>
+                  </div>
+              </form>
+              <div class="col-md-4">
+                    {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <div class='progress-wrapper'>
+                  <div style="background-color: #68a9ef; width: 0%;"></div>
+                </div>
+                <div id="progress-bar-message">{{latest_data_upload_status}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body pt-1">
+              <h2>Data Upload</h2>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th class="p-3 bg-info" style="font-size: 15px;">File Type</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Action</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Total</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Valid</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Invalid</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Status</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Started At</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Ended At</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Data</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Error</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for header in data_upload_task_table %}
+                    <tr style="font-size: 14px;">
+                      <td>{{ header.file_type }}</td>
+                      <td>{{ header.action }}</td>
+                      <td>{{header.total_records}}</td>
+                      <td>{{ header.valid_records }}</td>
+                      <td>{{ header.error_records }}</td>
+                      <td>{{ header.status }}</td>
+                      <!-- <td>{{header.started_at|date:"Y-m-d H:i:s A"}}</td> -->
+                      <td>{{ header.started_at|timezone:"Asia/Kolkata"|date:"Y-m-d H:i:s" }}</td>
+                      <!-- <td>{{header.ended_at|date:"Y-m-d H:i:s A"}}</td> -->
+                      <td>{{ header.ended_at|timezone:"Asia/Kolkata"|date:"Y-m-d H:i:s" }}</td>
+                      <td><a href="{{header.file.url}}" download><i
+                        class="bi bi-download"></i></a></td>
+                          {% if header.error_records != 0  %}
+                          <td><a href="{{header.error_file.url}}" download><i
+                            class="bi bi-download"></i></a></td>
+                          {% else %}
+                          <td></td>
+                          {% endif %}   
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {% include 'home/pagination/paginate.html' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

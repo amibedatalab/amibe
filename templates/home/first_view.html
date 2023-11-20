@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load user_permissions %}
+{% block title %} CHSBC HUB {% endblock %}
+{% block content %}
+<!-- Remove Duplicacy -->
+{% include 'includes/sidebar.html' %}
+{% include 'includes/navigation.html' %}
+<!-- [ Main Content ] start -->
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+
+        {% include 'home/filters/home_filter.html' %}
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <!-- [ Hover-table ] start -->
+            <div class="col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                      <h2>Data Upload</h2>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">File <br>Type</th>
+                                    <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">Financial <br>Year</th>
+                                    <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">Action</th>
+                                    <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">Total</th>
+                                    <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">Valid</th>
+                                    <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">Invalid</th>
+                                    <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">Status</th>
+                                    <th  class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">Is <br>Approved</th>
+                                    <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">Approved<br> By</th>
+                                    <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">Approved <br>Date</th>
+                                    <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">Started <br>At </th>
+                                    <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">Ended <br>At </th>
+                                    <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">Data</th>
+                                    <th class="p-3 bg-info p-2" style="font-size: 15px; text-align: center;vertical-align: middle;">Error</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for header in data_upload_task_table %}
+                                <tr style="font-size: 13px;">
+                                    <td>{{header.file_type}}</td>
+                                    {% if header.financial_year == "" %}
+                                        <td>N/A</td>
+                                    {% else %}
+                                    <td>{{header.financial_year}}</td>
+                                    {% endif %}
+                                    <td>{{header.action}}</td>
+                                    <td>{{ header.total_records}}</td>
+                                    <td>{{header.total_records}}</td>
+                                    <td>{{header.error_records}}</td>
+                                    <td>{{header.status}}</td>
+
+                                    {% if header.is_approved == True %}
+                                    <td>Approved</td>
+                                    {% elif header.is_approved == None %}
+                                    <td>N/A</td>
+                                    {% else %}
+                                    <td>Not Approved</td>
+                                    {% endif %}
+
+                                    {% if header.approved_by == None %}
+                                      <td>N/A</td>				    
+                                    {%else%}
+                                    <td>{{ header.approved_by }}</td>  
+                                    {% endif %}
+
+                                    {% if header.approved_on == None %}
+                                    <td>N/A</td>
+                                    {%else%}
+                                    <td>{{ header.approved_on|date:"Y-m-d h:i:s A" }}</td>
+                                    {% endif %}
+                                  
+                                    <td>{{header.started_at|date:"Y-m-d h:i:s A"}}</td>
+                                    <td>{{header.ended_at|date:"Y-m-d h:i:s A"}}</td>
+                                    <td><a href="{{header.file.url}}" download><i
+                                        class="bi bi-download"></i></a></td>
+                                        {% if header.error_records != 0  %}
+                                        <td><a href="{{header.error_file.url}}" download><i
+                                            class="bi bi-download"></i></a></td>
+                                        {% else %}
+                                        <td></td>
+                                        {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% include 'home/pagination/master_paginate.html' %}
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+<!-- Specific Page JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

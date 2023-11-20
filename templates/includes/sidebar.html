@@ -1,0 +1,83 @@
+{% load user_permissions %}
+<!-- [ navigation menu ] start -->
+<nav style="width:250px;" class="pcoded-navbar menupos-fixed menu-light">
+  <div class="navbar-wrapper">
+    <div class="navbar-content scroll-div mt-3">
+      <ul class="nav pcoded-inner-navbar">
+        <li class="nav-item pcoded-menu-caption">
+          <label>CHSBC Hub Navigation</label>
+        </li>
+		<li class="nav-item pcoded-hasmenu">
+			<a href="#!" class="nav-link " style="color: red;">
+				<span class="pcoded-micon"><i class="bi bi-arrow-down-square"></i></span>
+				<span class="pcoded-mtext" data-toggle="dropdown"> Dashboard</span>
+			</a>
+			<ul class="pcoded-submenu">
+				{% if request.user.is_authenticated %}
+				<!-- {% if request.user|user_has_permission:"chsbc_hub.view_masterrate" %} -->
+				<li><a href="{% url 'master_view_report' %}" style="color: red;" ><i class="bi bi-view-list"></i>  Analysis</a></li>
+				<!-- {% endif %} -->
+				{% endif %}
+				{% if request.user.is_authenticated %}
+				<!-- {% if request.user|user_has_permission:"chsbc_hub.add_masterrate" %} -->
+				<li><a href="{% url 'upload_master_file' %}" style="color: red;" ><i class="bi bi-upload"></i>  View Data</a></li>
+				<!-- {% endif %} -->
+				{% endif %}
+			</ul>
+		</li>
+		<li class="nav-item pcoded-hasmenu">
+			<a href="#!" class="nav-link " style="color: red;">
+				<span class="pcoded-micon"><i class="bi bi-arrow-down-square"></i></span>
+				<span class="pcoded-mtext" data-toggle="dropdown"> GYM Management</span>
+			</a>
+			<ul class="pcoded-submenu">
+				{% if request.user.is_authenticated %}
+				<!-- {% if request.user|user_has_permission:"chsbc_hub.view_uploadbluebook" %} -->
+				<li><a href="{% url 'due_blue_view_report' %}" style="color: red;" ><i class="bi bi-view-list"></i> Add Member</a></li>
+				<!-- {% endif %} -->
+				{% endif %}
+				{% if request.user.is_authenticated %}
+				<!-- {% if request.user|user_has_permission:"chsbc_hub.add_uploadbluebook" %} -->
+				<li><a href="{% url 'upload_due_blue_book' %}" style="color: red;" ><i class="bi bi-upload"></i>  Upload Excel</a></li>
+				<!-- {% endif %} -->
+				{% endif %}
+				{% if request.user.is_authenticated %}
+				<!-- {% if request.user|user_has_permission:"chsbc_hub.add_collectionupdate" %} -->
+				<li><a href="{% url 'upload_collection_flag' %}" style="color: red;" ><i class="bi bi-arrow-clockwise"></i>  Gym Plan</a></li>
+				<!-- {% endif %} -->
+				{% endif %}
+				{% if request.user.is_authenticated %}
+				<!-- {% if request.user|user_has_permission:"chsbc_hub.view_approverpermission" %} -->
+				<!-- <li><a href="{% url 'approval_fun' %}" style="color: red;" ><i class="bi bi-arrow-clockwise"></i>  Approve</a></li> -->
+				<!-- {% endif %} -->
+				{% endif %}
+			</ul>
+		</li>
+		{% if request.user.is_authenticated %}
+		<!-- {% if request.user|user_has_permission:"chsbc_hub.view_channelpartner" %} -->
+		<li class="nav-item">
+			<a href="{% url 'channel_partner_records' %}" class="nav-link" style="color: red;">
+			<span class="pcoded-micon"><i class="bi bi-file-earmark-text"></i></span>
+			<span class="pcoded-mtext">Channel Partners</span>
+			</a>
+		</li>
+		<!-- {% endif %} -->
+		{% endif %}
+		<li class="nav-item pcoded-menu-caption">
+          <label>Action zone</label>
+        </li> <li class="nav-item">
+          <a href="{% url 'password_change' %}" class="text-primary">
+            <span class="pcoded-micon"><i class="bi bi-gear"></i></span>
+            <span class="pcoded-mtext">Change Password</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'logout' %}" class="text-danger">
+            <span class="pcoded-micon"><i class="bi bi-box-arrow-right"></i></span>
+            <span class="pcoded-mtext">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

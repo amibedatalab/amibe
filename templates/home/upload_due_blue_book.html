@@ -1,0 +1,319 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tz %}
+{% load user_permissions %}
+{% block title %}
+  Upload Due/Blue Book
+{% endblock %}
+{% block content %}
+  <!-- Remove Duplicacy -->
+  {% include 'includes/sidebar.html' %}
+  {% include 'includes/navigation.html' %}
+  <!-- [ Main Content ] start -->
+  <style>
+
+.table-responsive td {
+    padding: 10px;
+}
+.card .card-block, .card .card-body {
+    padding: 10px 15px;
+}
+button.btn-outline-secondary:focus,
+button.btn-outline-secondary:active {
+  outline-color: transparent !important;
+  box-shadow: none !important;
+}
+select.form-select:focus,
+select.form-select:active {
+  outline-color: transparent !important;
+  box-shadow: none !important;
+}
+
+#main-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -650px; /* Adjust this value to position the spinner above the card */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 1000;
+}
+.spinner-container {
+    display: flex;
+    align-items: center;
+}
+.spinner-border.spinner-lg {
+    width: 4rem;
+    height: 4rem;
+    border-width: 0.3em;
+}
+
+.loader {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    justify-content: center;
+    border: 4px solid #F3F3F3;
+    border-top: 4px solid #3498DB;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+  }
+
+  </style>
+  <section class="pcoded-main-container">
+    <div class="pcoded-content">
+      <!-- [ Main Content ] start -->
+      <div class="row">
+        <!-- [ Hover-table ] start -->
+        <div class="col-md-12 col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <div>
+                <h3>Upload Due Or Blue Book</h3>
+              </div>
+              <br>
+              <div class="form-row">
+                <div class="col-sm-1.5">
+                  <button type="button" class="btn btn-primary"><a href="https://test0227.s3.ap-south-1.amazonaws.com/bb_db_format.xlsx" class="text-color-white" >Download Template</a></button>
+                </div>
+                <form method="post" action="{% url 'upload_due_blue_book' %}" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="form-row">
+                  <div class="form-group col-md-4 pl-4 pt-1">
+                      <input type="file" class="form-control-file" id="file" name="file" value="">
+                  </div>
+                  <div class="form-group col-md-3 pl-1">
+                      <select class="form-control" id="financial_year" name="financial_year">
+                          <option value="" selected disabled>Select Financial Year</option>
+                          <option value="2016-2017">2016-2017</option>
+                          <option value="2017-2018">2017-2018</option>
+                          <option value="2018-2019">2018-2019</option>
+                          <option value="2019-2020">2019-2020</option>
+                          <option value="2020-2021">2020-2021</option>
+                          <option value="2021-2022">2021-2022</option>
+                          <option value="2022-2023">2022-2023</option>
+                          <option value="2023-2024">2023-2024</option>
+                          <option value="2024-2025">2024-2025</option>
+                          <option value="2025-2026">2025-2026</option>
+                          <option value="2026-2027">2026-2027</option>
+                          <option value="2027-2028">2027-2028</option>
+                          <option value="2028-2029">2028-2029</option>
+                          <option value="2029-2030">2029-2030</option>
+                          <option value="2030-2031">2030-2031</option>
+                          <option value="2031-2032">2031-2032</option>
+                          <option value="2032-2033">2032-2033</option>
+                          <option value="2033-2034">2033-2034</option>
+                          <option value="2034-2035">2034-2035</option>
+                          <option value="2035-2036">2035-2036</option>
+                          <option value="2036-2037">2036-2037</option>
+                          <option value="2037-2038">2037-2038</option>
+                          <option value="2038-2039">2038-2039</option>
+                          <option value="2039-2040">2039-2040</option>
+                          <option value="2040-2041">2040-2041</option>
+                          <option value="2041-2042">2041-2042</option>
+                          <option value="2042-2043">2042-2043</option>
+                          <option value="2043-2044">2043-2044</option>
+                          <option value="2044-2045">2044-2045</option>
+                          <option value="2045-2046">2045-2046</option>
+                          <option value="2046-2047">2046-2047</option>
+                          <option value="2047-2048">2047-2048</option>
+                          <option value="2048-2049">2048-2049</option>
+                          <option value="2049-2050">2049-2050</option>
+                          <!-- Add more options as needed -->
+                      </select>
+                  </div>
+                  <div class="form-group col-md-2">
+                      <select class="form-control" id="operation_action" name="action">
+                          <option value="" selected disabled>Select Action</option>
+                          <option value="UPLOAD">NEW</option>
+                          <option value="APPEND">APPEND</option>
+                          <option value="REPLACE">REPLACE</option>
+                          <!-- Add more options as needed -->
+                      </select>
+                  </div>
+                  <div class="form-group col-md-2">
+                    {% if data_upload_latest_status == 'Completed...' %}
+                      <button type="submit" class="btn btn-danger m-0"><i class="bi fa-1.5x bi-filter m-0" onclick="refreshContent(this);"></i> Upload</button>
+                    {% else %}
+                    <button type="submit" class="btn btn-danger m-0"><i class="bi fa-1.5x bi-filter m-0"  disabled></i> Upload</button>
+                    {% endif %}
+                  </div>
+                  <div class="form-group col-md-1">
+                       <button type="button" class="btn btn-outline-secondary btn-sm" name="reset" id="refresh-buttons" style="color: rgb(255, 0, 0); height: 43px; ">
+                               <i class="bi bi-arrow-clockwise fa-2x bold-icon mt-2"></i>
+                       </button>
+                  </div>
+                  </div>
+              </form>
+              <div class="col-sm-4">
+                    {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if form.fieldname.errors %}
+                  <div class="alert alert-danger">
+                    {{ form.fieldname.errors }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <!-- <div id="loading">
+            <img id="loading-image" src="path/to/ajax-loader.gif" alt="Loading..." />
+          </div> -->
+          <div class="card-body pt-1">
+              <h2>Data Upload</h2>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Financial Year</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Action</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Total</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Valid</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Invalid</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Status</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Is Approved</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Approved By</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Approved Date</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; width: 90px;">Started At</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Ended At</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Data</th>
+                    <th class="p-3 bg-info" style="font-size: 15px;">Error</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for header in data_upload_task_table %}
+                    <tr style="font-size: 14px;">
+                      <!-- <th scope="row">{{forloop.counter}}</th> -->
+                      <td>{{ header.financial_year }}</td>
+                      {% comment %} <td>{{ header.file_type }}</td> {% endcomment %}
+                      <td>{{ header.action }}</td>
+                      <td>{{header.total_records}}</td>
+                      <td>{{ header.valid_records }}</td>
+                      <td>{{ header.error_records }}</td>
+                      <td style="max-width: 200px; word-wrap: break-word; white-space: normal;">{{ header.status }}</td>
+                      {% if header.is_approved == True %}
+                      <td>Approved</td>
+                      {% elif header.is_approved == None %}
+                      <td>N/A</td>
+                      {% else %}
+                      <td>Not Approved</td>
+                      {% endif %}
+
+                      {% if header.approved_by == None %}
+                        <td>N/A</td>
+                        {%else%}
+                        <td>{{ header.approved_by }}</td>
+                      {% endif %}
+
+                      {% if header.approved_on == None %}
+                      <td>N/A</td>
+                      {%else%}
+                      <td>{{ header.approved_on|date:"Y-m-d h:i:s A" }}</td>
+                      {% endif %}
+                    
+                      <td>{{ header.started_at|date:"Y-m-d h:i:s" }}</td>
+                      <td>{{ header.ended_at|date:"Y-m-d h:i:s" }}</td>
+                      <!-- <td>{{header.ended_at|date:"Y-m-d H:i:s A"}}</td> -->
+                      <td><a href="{{header.file.url}}" download><i
+                        class="bi bi-download"></i></a></td>
+                          {% if header.error_records != 0  %}
+                          <td><a href="{{header.error_file.url}}" download><i
+                            class="bi bi-download"></i></a></td>
+                          {% else %}
+                          <td></td>
+                          {% endif %}   
+                    </tr>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {% include 'home/pagination/paginate.html' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    // Add an event listener for the refresh button click
+    document.getElementById('refresh-buttons').addEventListener('click', function () {
+        // Reload the current page when the button is clicked
+        window.location.href = "http://13.233.156.126/hub/chsbc/upload_due_blue_book/";   
+        });
+  </script>
+<script>
+function refreshContent(buttonElement) {
+    console.log("button clicked");
+    // Disable the button temporarily
+    $(buttonElement).prop('disabled', true);
+    const selectedValue = $('#merchant-select').val();
+    $.ajax({
+        type: 'POST',
+        url: '/hub/upload_due_blue_book/',
+        data: {
+            'selected_key': selectedValue,
+            'csrfmiddlewaretoken': getCSRFToken()
+        },
+        beforeSend: function() {
+            console.log("Before send - Show loader");
+            // Show the spinner before the AJAX request
+            $('#loader-health-check').removeClass('d-none');
+            let tableBody = document.querySelector("#health-check-table tbody");
+            tableBody.innerHTML = '<tr></tr>';
+        },
+        success: function (responseHtml) {
+            console.log("Success - Replace table content");
+            let tableBody = document.querySelector("#health-check-table tbody");
+            if (responseHtml && responseHtml['html_form']) {
+                tableBody.innerHTML = responseHtml['html_form'];
+            } else {
+                tableBody.innerHTML = '<tr><td colspan="2">No health check data.</td></tr>';
+            }
+        },
+        error: function () {
+            console.log("Error - Handle error");
+            // Handle error if needed
+            $('#health-check-table tbody').html('<tr><td colspan="2">Error fetching content.</td></tr>');
+        },
+        complete: function () {
+            console.log("Complete - Hide loader");
+            // Re-enable the button
+            $(buttonElement).prop('disabled', false);
+            // Hide the spinner
+            $('#loader-health-check').addClass('d-none');
+        }
+    });
+    console.log("button got clicked");
+}
+</script>
+  <!-- <script>
+    $(window).load(function() {
+      $('#loading').hide();
+    });
+  </script> -->
+{% endblock %}
+<!-- Specific Page JS goes HERE -->
+
+<script src="{% static 'celery_progress/celery_progress.js' %}"></script>
+{% block javascripts %}
+{% endblock %}

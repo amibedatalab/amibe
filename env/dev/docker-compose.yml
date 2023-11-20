@@ -1,0 +1,53 @@
+version: "3.3"
+services:
+  pelocal-chsbc-rabbitmq:
+    image: rabbitmq:3.7.7-management-alpine
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASSWORD}
+      - RABBITMQ_DEFAULT_VHOST=${RABBITMQ_VHOST}
+    ports:
+      - ${RABBITMQ_PORT}:${RABBITMQ_PORT}
+      # access rabbitmq management plugin on this port
+      - ${RABBITMQ_MANAGEMENT_PORT}:${RABBITMQ_MANAGEMENT_PORT}
+
+  pelocal-chsbc-backend:
+    restart: always
+    build:
+      context: .
+      args:
+        - UID=$UID
+        - GID=$EUID
+      dockerfile: env/dev/Dockerfile
+    entrypoint: ["./env/dev/docker-entrypoint.sh"]
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/app
+
+  pelocal-celery-worker:
+    restart: always
+    build:
+      context: .
+      args:
+        - UID=$UID
+        - GID=$EUID
+      dockerfile: env/dev/Dockerfile
+    tty: true
+    stdin_open: true
+    entrypoint: ["./env/dev/celery-worker-entrypoint.sh"]
+    ports:
+      - ${FLOWER_PORT}:${FLOWER_PORT}
+    volumes:
+      - .:/app
+    environment:
+      # name of the service itself is the rabbitmq host
+      RABBITMQ_HOST: ${RABBITMQ_HOST}
+      FLOWER_USER: ${FLOWER_USER}
+      FLOWER_PASSWORD: ${FLOWER_PASSWORD}
+      COLUMNS: 80
+    depends_on:
+      - pelocal-chsbc-backend
+      - pelocal-chsbc-db
+      - pelocal-chsbc-rabbitmq

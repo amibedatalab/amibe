@@ -1,0 +1,100 @@
+
+{% extends "base.html" %}
+{% block title %} Chsbc Dashboard {% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+<a href="#" class="btn btn-secondary">Back</a>
+</div>
+
+
+{% include 'includes/sidebar.html' %}
+{% include 'includes/navigation.html' %}
+
+<div class="container mt-4">
+    <div class="row justify-content-around mt-5 mb-2">
+        <div class="col-md-2">
+            <!-- <a href="#" class="btn btn-secondary"><i class="bi bi-arrow-return-left"></i> Back</a> -->
+        </div>
+        <div class="col-md-7"></div>
+    </div>
+    <!-- file upload section  -->
+    <div class="row justify-content-center">
+
+        <!-- master data form starts here -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center" >Uploaded Data Details</h1>
+                </div>
+                    <div class="card-body">
+                        <!-- <div class='progress-wrapper'>
+                            <div id='progress-bar' class='progress-bar' style="background-color: #68a9ef; width: 0%;">&nbsp;</div>
+                          </div>
+                        <div id="progress-bar-message">Waiting for progress to start...</div>  -->
+                          {% comment %} {{http_response.content}} {% endcomment %}
+                          <h4>Data Uploaded details(last 5 records)</h4>
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Filenaem</th>
+                                <th scope="col">Uploaded By</th>
+                                <th scope="col">Uploaded On</th>
+                                <th scope="col">Total Records</th>
+                                <th scope="col">Error Records</th>
+                                <th scope="col">Financial year</th>
+                                <th scope="col">Action</th>
+                              </tr>
+
+                            </thead>
+                            <tbody>
+                              {% for header in data_uploade_task_table_last_5_records %}
+                              <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{header.filename}}</td>
+                                <td>{{header.created_by}}</td>
+                                <td>{{header.created_on}}</td>
+                                <td>{{header.total_records}}</td>
+                                <td>{{header.error_records}}</td>
+                                <td>{{header.financial_year}}</td>
+                                <td>{{header.operation_action}}</td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+// vanilla JS version
+{% comment %} document.addEventListener("DOMContentLoaded", function () {
+    var progressUrl = "{% url 'celery_progress:task_status' 2 %}";
+    CeleryProgressBar.initProgressBar(progressUrl);
+  }); {% endcomment %}
+
+function updateProgress(progressBarElement, progressBarMessageElement, progress) {
+  progressBarElement.style.width = progress.percent + "%";
+  progressBarMessageElement.innerHTML = progress.current + ' of ' + progress.total + ' processed.';
+}
+
+var trigger = document.getElementById('progress-bar-trigger');
+trigger.addEventListener('click', function(e) {
+  var bar = document.getElementById("progress-bar");
+  var barMessage = document.getElementById("progress-bar-message");
+  for (var i = 0; i < 11; i++) {
+    setTimeout(updateProgress, 500 * i, bar, barMessage, {
+      percent: 10 * i,
+      current: 10 * i,
+      total: 100
+    })
+  }
+})
+</script>
+{% endblock content %}
+
+

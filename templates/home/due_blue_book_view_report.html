@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load user_permissions %}
+{% load tz %}
+{% block title %}
+  Due/Blue Book View Report
+{% endblock %}
+{% block content %}
+  <!-- Remove Duplicacy -->
+  {% include 'includes/sidebar.html' %}
+  {% include 'includes/navigation.html' %}
+  <!-- [ Main Content ] start -->
+  <style>
+    .custom-form-field {
+      width: 150px; /* Adjust the width as needed */
+    }
+  </style>
+  <section class="pcoded-main-container">
+    <div class="pcoded-content">
+
+      {% include 'home/filters/blue_due_book_filter.html' %}
+      <!-- [ Main Content ] start -->
+      <div class="row">
+        <!-- [ Hover-table ] start -->
+        <div class="col-md-12 col-sm-12">
+          <div class="card">
+          <div class="card-body">
+	<div class="row">
+              <div class="col-md-6">
+                  <span style="display: inline-block; margin-right: 10px;"><h2>Data View</h2></span>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex justify-content-end">
+                    <span style="display: inline-block; margin-right: 10px;"><h4 style="color: rgb(0, 153, 255);"><span style="font-weight: normal;">Total Records:</span> {{total_records}}</h4></span>
+                    <span style="display: inline-block;" id="formattedNumber"><h4 style="color: rgb(0, 153, 255);"><span style="font-weight: normal;">Total Commission Amount:</span> {{commission_amount_total}}</h4></span>
+                </div>
+            </div>
+          </div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Policy <br>No</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Application <br>No</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Bank Channel<br> Partner</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Product Name</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Product <br>Code</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Plan <br>Type</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Premium <br>Frequency</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Premium<br> Paying<br> Term</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Policy <br>Term</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Annualised <br>Target <br>Premium</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Modal <br>Based <br>Premium</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Due <br>Month</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Actual <br>Due Date</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Policy <br>Effective <br>Date</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Year <br>Banding</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Next Premium <br>Due Date</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Owner <br>Name</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Registration <br>Status As <br>On Due Date</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Concatenate <br>With Merging <br>Branch</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">RRM<br> Name</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">ZRM<br> Name</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">CRO <br>ZH Name</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Status Of <br>Policy</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Branch Of <br>Policy</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">SP Agent <br>Code</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Commission <br>Amount</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Branch <br>Code</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Branch<br> Name</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Staff/<br>Non Staff</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Branch<br> Zone</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Branch <br>Circle</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Rule <br>Name</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Book <br>Type</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Collection <br>Flag</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Is match with <br>Channel Partner</th>
+                    <!-- <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Is match with <br>Commission Slab</th> -->
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Created On</th>
+                    <th class="p-3 bg-info" style="font-size: 15px; text-align: center; vertical-align: middle;">Financial <br>Year</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for header in model_obj %}
+                    <tr style="font-size: 16px;">
+                      <td>{{ header.policy_no }}</td>
+                      <td>{{ header.application_no }}</td>
+                      <td>{{ header.bank_channel_partner }}</td>
+                      <td style="max-width: 200px; word-wrap: break-word; white-space: normal;">{{ header.product_name }}</td>
+                      <td style="text-align:right;">{{ header.product_code }}</td>
+                      <td>{{ header.plan_type }}</td>
+                      <td>{{ header.premium_frequency }}</td>
+                      <td>{{ header.premium_paying_term }}</td>
+                      <td>{{ header.policy_term }}</td>
+                      <td>{{ header.annualized_target_premium }}</td>
+                      <td>{{ header.modal_based_premium }}</td>
+                      <td>{{ header.due_month }}</td>
+                      <td>{{ header.actual_due_date }}</td>
+                      <td>{{ header.policy_effective_date }}</td>
+                      <td>{{ header.year_banding }}</td>
+                      <td>{{ header.next_premium_due_date }}</td>
+                      <td>{{ header.owner_name }}</td>
+                      <td>{{ header.registration_status_as_on_due_date }}</td>
+                      <td>{{ header.concatenate_with_merging_branch }}</td>
+                      <td>{{ header.rrm_name }}</td>
+                      <td>{{ header.zrm_name }}</td>
+                      <td>{{ header.cro_zh_name }}</td>
+                      <td>{{ header.status_of_policy }}</td>
+                      <td>{{ header.branch_of_sale }}</td>
+                      <td>{{ header.sp_agent_code }}</td>
+                      <td>{{ header.commision_amount }}</td>
+                      <td>{{ header.branch_code }}</td>
+                      <td>{{ header.branch_name }}</td>
+                      <td>{{ header.staff_non_staff }}</td>
+                      <td>{{ header.bank_zone }}</td>
+                      <td>{{ header.bank_circle }}</td>
+                      <td>{{ header.rule_name }}</td>
+                      <td>{{ header.book_type }}</td>
+                      <td>{{ header.collection_flag }}</td>
+                      <td>{{ header.is_match_with_channel_partners }}</td>
+                      <!-- <td>{{ header.is_match_with_commission_slab }}</td> -->
+                      <td>{{ header.created_on|timezone:"Asia/Kolkata" }}</td>
+                      <td>{{ header.financial_year }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {% include 'home/pagination/masters_paginate.html' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+<!-- Specific Page JS goes HERE -->
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/FileSaver.min.js"></script>
+<script>
+  $(document).ready(function () {
+      // Attach a click event handler to the "Download" links
+      $(".download-link").click(function (e) {
+          e.preventDefault(); // Prevent the default behavior of the anchor tag
+  
+          // Retrieve the data to be downloaded from the data-file-content attribute
+          var dataToDownload = $(this).data("file-content");
+  
+          // Convert the data to a Blob (assuming it's a text-based format like CSV)
+          var blob = new Blob([dataToDownload], { type: "text/plain;charset=utf-8" });
+  
+          // Use FileSaver.js to trigger the download
+          saveAs(blob, "downloaded_data.csv"); // Specify the filename and file type
+      });
+  });
+  </script>
+      <script>
+        // Your number
+        var number ={commission_amount_total};
+
+        // Format the number with commas
+        var formattedNumber = number.toLocaleString();
+
+        // Display the formatted number in the HTML element
+        document.getElementById("formattedNumber").innerHTML = formattedNumber;
+    </script>
+  
+  
+{% endblock %}

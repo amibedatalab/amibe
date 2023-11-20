@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load user_permissions %}
+{% block title %} Approve Upload {% endblock %}
+{% block content %}
+<!-- Remove Duplicacy -->
+{% include 'includes/sidebar.html' %}
+{% include 'includes/navigation.html' %}
+<!-- [ Main Content ] start -->
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <!-- [ Hover-table ] start -->
+            <div class="col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="card-body pt-2 pl-1">
+                        <h2>Approve Upload</h2>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="p-3 bg-info" style="font-size: 15px;">Financial
+                                        Year
+                                    </th>
+                                    <th class="p-3 bg-info" style="font-size: 15px;">
+                                        Total</th>
+                                    <th class="p-3 bg-info" style="font-size: 15px;">
+                                        File type</th>
+                                    <th class="p-3 bg-info" style="font-size: 15px;">
+                                        Action</th>
+                                    <th class="p-3 bg-info" style="font-size: 15px;">Is
+                                        Approved
+                                    </th>
+                                    <th class="p-3 bg-info" style="font-size: 15px;">
+                                        Uploaded By</th>
+                                    <th class="p-3 bg-info" style="font-size: 15px;">Approved
+                                        On
+                                    </th>
+                                    <th class="p-3 bg-info" style="font-size: 15px;">View
+                                        Data
+                                    </th>
+                                    <th class="p-3 bg-info" style="font-size: 15px;"> message
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for header in approver_table %}
+                                <tr style="font-size: 14px;">
+                                    <td>{{ header.financial_year }}</td>
+                                    <td>{{ header.total_records }}</td>
+                                    <td>{{ header.file_type }}</td>
+                                    <td>{{ header.action }}</td>
+                                    {% if header.is_approved == True %}
+                                    <td>Approved</td>
+                                    {% elif header.is_approved == None %}
+                                    <td>N/A</td>
+                                    {% else %}
+                                    <td>Not Approved</td>
+                                    {% endif %}
+                                    <td>{{ header.uploaded_by }}</td>
+                                    {% if header.approved_on == None %}
+                                    <td>N/A</td>
+                                    {%else%}
+                                    <td>{{ header.approved_on|date:"Y-m-d h:i:s A" }}</td>
+                                    {% endif %}
+                                    <td><a  href="{{header.file.url}}"><i
+                                        class="bi bi-download"></i></a></td>
+                                    {% if header.is_approved == True %}
+
+                                    <td>Approved</td>
+                                    <td></td>
+                                    <td></td>
+                                    {% elif header.is_approved == False %}
+                                    <td style="max-width: 200px; word-wrap: break-word; white-space: normal;">Rejected - {{ header.message }}</td>
+                                    {% else %}
+
+                                    <td>
+                                        <form method="POST" action="{% url 'approve_action' header.id header.data_id %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-success">Approve</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form method="POST" action="{% url 'reject_action' header.id header.data_id %}">
+                                            {% csrf_token %}
+                                            <div class="input-group">
+                                                <input type="text" name="rejection_message" class="form-control"
+                                                    placeholder="Enter rejection message" required>
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn btn-danger">Reject</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% include 'home/pagination/paginate.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+<!-- Specific Page JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

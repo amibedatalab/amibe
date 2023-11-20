@@ -1,0 +1,19 @@
+.sidebar-text-color-orange {
+    color: rgb(221, 144, 2) !important;
+  }
+  .sidebar-text-color-blue {
+    color: rgb(15, 15, 155) !important;
+  }
+  .navigation-text-color-orange {
+    color: rgb(221, 144, 2) !important;
+  }
+  .navigation-text-color-blue {
+    color: rgb(15, 15, 155) !important;
+  }
+  .bg-color-orange {
+    background-color: rgb(221, 144, 2) !important;
+  }
+  .text-color-white {
+    color: #fff !important;
+    font-size: 15px !important;
+  }
